@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import com.hss.hssbanksystem.core.Resource
 import com.hss.hssbanksystem.data.network.LoginApi
 import com.hss.hssbanksystem.data.repository.LoginRepository
 import com.hss.hssbanksystem.databinding.FragmentLoginBinding
 import com.hss.hssbanksystem.ui.view.base.BaseFragment
 import com.hss.hssbanksystem.ui.viewmodel.LoginViewModel
+import kotlinx.coroutines.launch
 
 class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding, LoginRepository>() {
 
@@ -24,15 +27,16 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding, LoginRe
         }
 
         viewModel.loginModel.observe(viewLifecycleOwner, Observer {
-            /*when (it) {
+            when (it) {
                  is Resource.Success -> {
-                     Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
+                     lifecycleScope.launch {
+                         dataStoreHelper.saveUserData(it.value.token, it.value.username, it.value.userType)
+                     }
                  }
                  is Resource.Failure -> {
                      Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
                  }
-             }*/
-
+             }
         })
 
     }
