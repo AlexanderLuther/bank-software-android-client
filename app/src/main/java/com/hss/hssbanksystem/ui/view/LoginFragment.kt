@@ -31,6 +31,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding, LoginRe
                  is Resource.Success -> {
                      lifecycleScope.launch {
                          dataStoreHelper.saveUserData(it.value.token, it.value.username, it.value.userType)
+                         
                      }
                  }
                  is Resource.Failure -> {
