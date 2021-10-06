@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">HSSBankSystem</string>
+    <string name="username">Nombre de Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar Sesion</string>
+    <string name="register">Registrarme</string>
+    <string name="todo">TODO</string>
+    <string name="helperUsername">(*)Ingrese su nombre de usuario</string>
+    <string name="helperPassword">(*)Ingrese su contraseña</string>
+    <string name="forgetPassword">Olvide mi contraseña</string>
+
+    <string name="title_activity_no_logged_user">NoLoggedUserActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="usernameRequired">Nombre de usuario obligatorio.</string>
+    <string name="passwordRequired">Contraseña obligatoria.</string>
+
 </resources>
