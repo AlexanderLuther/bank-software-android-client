@@ -1,13 +1,14 @@
-package com.hss.hssbanksystem
+package com.hss.hssbanksystem.ui.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
+import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.core.DataStoreHelper
-import com.hss.hssbanksystem.ui.view.NoLoggedUserActivity
+import com.hss.hssbanksystem.core.startNewActivity
+import com.hss.hssbanksystem.ui.view.base.LoggedUserActivity
+import com.hss.hssbanksystem.ui.view.base.NoLoggedUserActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,8 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         val dataStoreHelper = DataStoreHelper(this)
         dataStoreHelper.authenticationToken.asLiveData().observe(this, Observer {
-            Toast.makeText(this, "Token is Null", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, NoLoggedUserActivity::class.java))
+            val activity = if(it == null) NoLoggedUserActivity::class.java else LoggedUserActivity::class.java
+            startNewActivity(activity)
         })
     }
 }

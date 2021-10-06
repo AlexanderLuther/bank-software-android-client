@@ -13,12 +13,20 @@
         android:theme="@style/Theme.HSSBankSystem"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.view.NoLoggedUserActivity"
+            android:name=".ui.MainActivity2"
+            android:exported="true" />
+        <activity
+            android:name=".ui.view.base.LoggedUserActivity"
+            android:exported="true"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.HSSBankSystem.NoActionBar" />
+        <activity
+            android:name=".ui.view.base.NoLoggedUserActivity"
             android:exported="true"
             android:label="@string/title_activity_no_logged_user"
             android:theme="@style/Theme.HSSBankSystem.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

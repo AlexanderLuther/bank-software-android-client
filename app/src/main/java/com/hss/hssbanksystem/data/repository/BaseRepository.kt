@@ -1,6 +1,6 @@
 package com.hss.hssbanksystem.data.repository
 
-import com.hss.hssbanksystem.core.Resource
+import com.hss.hssbanksystem.data.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

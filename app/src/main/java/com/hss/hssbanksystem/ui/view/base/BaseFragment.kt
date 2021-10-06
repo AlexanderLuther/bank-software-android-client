@@ -11,9 +11,10 @@ import androidx.viewbinding.ViewBinding
 import com.hss.hssbanksystem.core.DataStoreHelper
 import com.hss.hssbanksystem.core.RetrofitHelper
 import com.hss.hssbanksystem.data.repository.BaseRepository
+import com.hss.hssbanksystem.ui.viewmodel.base.BaseViewModel
 import com.hss.hssbanksystem.ui.viewmodel.base.ViewModelFactory
 
-abstract class BaseFragment<V: ViewModel, B: ViewBinding, R: BaseRepository>: Fragment() {
+abstract class BaseFragment<V: BaseViewModel, B: ViewBinding, R: BaseRepository>: Fragment() {
 
     protected lateinit var binding: B
     protected lateinit var viewModel: V
