@@ -11,7 +11,7 @@ class RetrofitHelper {
     companion object {
         private const val PORT = 3000
         private const val IP = "192.168.1.50"
-        private const val BASE_URL = "$IP:$PORT/"
+        private const val BASE_URL = "http://$IP:$PORT/"
     }
 
     fun <T> buildApi(api: Class<T>): T {
