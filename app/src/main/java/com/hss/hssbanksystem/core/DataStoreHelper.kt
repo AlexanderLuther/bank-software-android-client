@@ -2,10 +2,7 @@ package com.hss.hssbanksystem.core
 
 import android.content.Context
 import androidx.datastore.DataStore
-import androidx.datastore.preferences.Preferences
-import androidx.datastore.preferences.createDataStore
-import androidx.datastore.preferences.edit
-import androidx.datastore.preferences.preferencesKey
+import androidx.datastore.preferences.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -37,7 +34,12 @@ class DataStoreHelper(context: Context) {
             it[USERNAME_KEY] = username
             it[USERTYPE_KEY] = userType
         }
+    }
 
+    suspend fun clear(){
+        dataStore.edit{
+            it.clear()
+        }
     }
 
     companion object {

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.google.android.material.snackbar.Snackbar
 import com.hss.hssbanksystem.data.Resource
 import com.hss.hssbanksystem.data.model.ErrorModel
+import com.hss.hssbanksystem.ui.view.base.BaseFragment
 
 fun<A: Activity> Activity.startNewActivity(activity: Class<A>){
     Intent(this, activity).also {
@@ -40,6 +41,7 @@ fun View.snackbar(message: String, action: (() -> Unit)? = null){
 fun Fragment.handleApiError(failure: Resource.Failure, retry: (() -> Unit)? = null){
     when{
         failure.isNetworkError -> requireView().snackbar("No hay conexion a internet.", retry)
+        failure.errorCode == 401 -> { (this as BaseFragment<*,*,*>).logout() }
         else -> {
             requireView().snackbar(jacksonObjectMapper().readValue<ErrorModel>(failure.errorBody?.string().toString()).error)
         }

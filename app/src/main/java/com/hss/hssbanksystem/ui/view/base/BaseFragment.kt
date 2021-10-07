@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.hss.hssbanksystem.core.DataStoreHelper
 import com.hss.hssbanksystem.core.RetrofitHelper
+import com.hss.hssbanksystem.core.startNewActivity
+import com.hss.hssbanksystem.data.network.AuthenticationApi
 import com.hss.hssbanksystem.data.repository.BaseRepository
 import com.hss.hssbanksystem.ui.viewmodel.base.BaseViewModel
 import com.hss.hssbanksystem.ui.viewmodel.base.ViewModelFactory
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 abstract class BaseFragment<V: BaseViewModel, B: ViewBinding, R: BaseRepository>: Fragment() {
 
@@ -20,7 +25,6 @@ abstract class BaseFragment<V: BaseViewModel, B: ViewBinding, R: BaseRepository>
     protected lateinit var viewModel: V
     protected lateinit var dataStoreHelper: DataStoreHelper
     protected val retrofitHelper = RetrofitHelper()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +34,16 @@ abstract class BaseFragment<V: BaseViewModel, B: ViewBinding, R: BaseRepository>
         dataStoreHelper = DataStoreHelper(requireContext())
         binding = getViewBinding(inflater, container)
         viewModel = ViewModelProvider(this, ViewModelFactory(getRepository())).get(getViewModel())
+        lifecycleScope.launch { dataStoreHelper.authenticationToken.first() }
         return binding.root
+    }
+
+    fun logout() = lifecycleScope.launch {
+        val token = dataStoreHelper.authenticationToken.first()
+        val api = retrofitHelper.buildApi(AuthenticationApi::class.java, token)
+        viewModel.logout(api)
+        dataStoreHelper.clear()
+        requireActivity().startNewActivity(NoLoggedUserActivity::class.java)
     }
 
     abstract fun getViewModel(): Class<V>
