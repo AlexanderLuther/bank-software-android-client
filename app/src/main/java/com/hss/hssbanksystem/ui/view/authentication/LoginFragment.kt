@@ -50,6 +50,7 @@ class LoginFragment : BaseFragment<AuthenticationViewModel, FragmentLoginBinding
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
 
+        
         viewModel.authenticationModel.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(it is Resource.Loading)
             when (it) {
