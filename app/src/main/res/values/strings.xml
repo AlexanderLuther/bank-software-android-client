@@ -13,5 +13,7 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="usernameRequired">Nombre de usuario obligatorio.</string>
     <string name="passwordRequired">Contraseña obligatoria.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
