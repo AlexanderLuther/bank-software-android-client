@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.data.Resource
 import com.hss.hssbanksystem.core.handleApiError
@@ -45,7 +46,11 @@ class LoginFragment : BaseFragment<AuthenticationViewModel, FragmentLoginBinding
                 viewModel.login(username, password)
             }
         }
+        binding.registerButton.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+        }
 
+        
         viewModel.authenticationModel.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(it is Resource.Loading)
             when (it) {
