@@ -1,6 +1,7 @@
 package com.hss.hssbanksystem.data.repository
 
 import com.hss.hssbanksystem.data.Resource
+import com.hss.hssbanksystem.data.network.AuthenticationApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -23,6 +24,10 @@ abstract  class BaseRepository {
                 }
             }
         }
+    }
+
+    suspend fun logout(api: AuthenticationApi) = safeApiCall {
+        api.logout()
     }
 
 }

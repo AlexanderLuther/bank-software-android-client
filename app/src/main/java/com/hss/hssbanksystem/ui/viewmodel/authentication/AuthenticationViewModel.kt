@@ -9,7 +9,9 @@ import com.hss.hssbanksystem.data.repository.AuthenticationRepository
 import com.hss.hssbanksystem.ui.viewmodel.base.BaseViewModel
 import kotlinx.coroutines.launch
 
-class AuthenticationViewModel(private val repository: AuthenticationRepository): BaseViewModel(repository) {
+class AuthenticationViewModel(
+    private val repository: AuthenticationRepository
+    ): BaseViewModel(repository) {
 
     private val _authenticationModel : MutableLiveData<Resource<AuthenticationModel>> = MutableLiveData()
     val authenticationModel: LiveData<Resource<AuthenticationModel>>
