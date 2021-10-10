@@ -1,60 +1,100 @@
 package com.hss.hssbanksystem.ui.view.authentication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.hss.hssbanksystem.R
+import com.hss.hssbanksystem.core.handleApiError
+import com.hss.hssbanksystem.core.hideKeyboard
+import com.hss.hssbanksystem.core.startNewActivity
+import com.hss.hssbanksystem.core.visible
+import com.hss.hssbanksystem.data.Resource
+import com.hss.hssbanksystem.data.network.AuthenticationApi
+import com.hss.hssbanksystem.data.repository.AuthenticationRepository
+import com.hss.hssbanksystem.databinding.FragmentRegisterBinding
+import com.hss.hssbanksystem.ui.view.base.BaseFragment
+import com.hss.hssbanksystem.ui.view.base.HomeActivity
+import com.hss.hssbanksystem.ui.viewmodel.authentication.AuthenticationViewModel
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class RegisterFragment : BaseFragment<AuthenticationViewModel, FragmentRegisterBinding, AuthenticationRepository>() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class RegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+        //Ocultar la barra de cargga
+        binding.progressBar.visible(false)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        //Mostrar un error si el cui esta vacion o es menos a 13 caracteres
+        binding.cuiLayout.editText?.addTextChangedListener{
+            when {
+                binding.cuiLayout.editText?.text.toString().isEmpty() -> binding.cuiLayout.error = getString(R.string.cuiRequired)
+                binding.cuiLayout.editText?.text?.length != 13 -> binding.cuiLayout.error = getString(R.string.noValidCui)
+                else -> binding.cuiLayout.error = null
             }
+        }
+
+        //Mostrar un error si la el nombre de usuario esta vacio
+        binding.usernameLayout.editText?.addTextChangedListener {
+            if(binding.usernameLayout.editText?.text.toString().trim().isEmpty()) binding.usernameLayout.error = getString(R.string.usernameRequired)
+            else binding.usernameLayout.error = null
+        }
+
+        //Mostrar un error si la contraseña esta vacia
+        binding.passwordLayout.editText?.addTextChangedListener {
+            if(binding.passwordLayout.editText?.text.toString().trim().isEmpty()) binding.passwordLayout.error = getString(R.string.passwordRequired)
+            else binding.passwordLayout.error = null
+        }
+
+        //Validar los campos y procesar la solicitud de registro de nuevo usuario
+        binding.registerButton.setOnClickListener {
+            hideKeyboard(activity)
+            val username = binding.usernameLayout.editText?.text.toString().trim()
+            val password = binding.passwordLayout.editText?.text.toString().trim()
+            val cui = binding.cuiLayout.editText?.text.toString().trim()
+            if(validateData(username, password, cui)){
+                viewModel.createUser(username, password, 1, cui)
+            }
+        }
+
+        //Setear el patron observador
+        viewModel.authenticationModel.observe(viewLifecycleOwner, Observer {
+            binding.progressBar.visible(it is Resource.Loading)
+            when (it) {
+                is Resource.Success -> {
+                    lifecycleScope.launch{
+                        viewModel.saveUserData(it.value.token, it.value.username)
+                        requireActivity().startNewActivity(HomeActivity::class.java)
+                    }
+                }
+                is Resource.Failure -> handleApiError(it)
+            }
+        })
     }
+
+    /**
+     * Funcion que valida que los campos obligatorios no esten vacios, de estarlo muetra el error
+     */
+    private fun validateData(username: String, password:String, cui:String):Boolean {
+        if(username.isEmpty()) binding.usernameLayout.error = getString(R.string.usernameRequired)
+        if(password.isEmpty()) binding.passwordLayout.error = getString(R.string.passwordRequired)
+        if(cui.isEmpty()) binding.cuiLayout.error = getString(R.string.cuiRequired)
+        return username.isNotEmpty() && password.isNotEmpty() && cui.isNotEmpty()
+    }
+
+    /**
+     * Funciones sobrecargadas por la herencia de la clase abstracta BaseFragment
+     */
+    override fun getViewModel() = AuthenticationViewModel::class.java
+
+    override fun getViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentRegisterBinding = FragmentRegisterBinding.inflate(inflater, container, false)
+
+    override fun getRepository(): AuthenticationRepository = AuthenticationRepository(retrofitHelper.buildApi(AuthenticationApi::class.java), dataStoreHelper)
+
 }

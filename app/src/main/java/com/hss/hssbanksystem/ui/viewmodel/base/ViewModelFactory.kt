@@ -14,7 +14,7 @@ class ViewModelFactory(private val repository: BaseRepository): ViewModelProvide
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when{
             modelClass.isAssignableFrom(AuthenticationViewModel::class.java) -> AuthenticationViewModel(repository as AuthenticationRepository) as T
-                modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(repository as UserRepository) as T
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(repository as UserRepository) as T
             else -> throw IllegalArgumentException("ViewModelClass Not Found")
         }
     }

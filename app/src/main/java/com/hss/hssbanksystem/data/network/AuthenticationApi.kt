@@ -8,12 +8,38 @@ import retrofit2.http.POST
 
 interface AuthenticationApi {
 
+    /**
+     * Funcion que ejecuta una peticion https POST
+     * @param username Cuerpo de la peticion
+     * @param password Cuerpo de la peticion
+     */
+    @FormUrlEncoded
     @POST("login")
     suspend fun login(
         @Field("username") username: String,
         @Field("password") password: String
     ) : AuthenticationModel
 
+    /**
+     * Funcion que ejecuta una peticion https POST
+     * @param username Cuerpo de la peticion
+     * @param password Cuerpo de la peticion
+     * @param userType Cuerpo de la peticion
+     * @param cui Cuerpo de la peticion
+     */
+    @FormUrlEncoded
+    @POST("user")
+    suspend fun createUser(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("user_type") userType: Int,
+        @Field("cui") cui: String
+    ) : AuthenticationModel
+
+    /**
+     * Funcion que ejecuta una peticion https POST
+     */
     @POST("logout")
     suspend fun logout(): ResponseBody
+
 }
