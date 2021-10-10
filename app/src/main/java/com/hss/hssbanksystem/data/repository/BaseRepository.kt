@@ -20,7 +20,6 @@ abstract  class BaseRepository {
                     else -> {
                         Resource.Failure(true, null, null)
                     }
-
                 }
             }
         }

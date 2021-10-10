@@ -4,6 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class AuthenticationModel(
     @SerializedName("token") val token: String,
-    @SerializedName("user_type") val userType: Int,
-    @SerializedName("username")val username: String
+    @SerializedName("username") val username: String
 )

@@ -12,7 +12,11 @@ class AuthenticationRepository(
         api.login(username, password)
     }
 
-    suspend fun saveUserData(token:String, username:String, userType: Int){
-        dataStoreHelper.saveUserData(token, username, userType)
+    suspend fun createUser(username: String, password: String, userType: Int, cui: String) = safeApiCall{
+        api.createUser(username, password, userType, cui)
+    }
+
+    suspend fun saveUserData(token:String, username:String){
+        dataStoreHelper.saveUserData(token, username)
     }
 }

@@ -23,19 +23,21 @@ class DataStoreHelper(context: Context) {
             it[USERNAME_KEY]
         }
 
-    val userType: Flow<Int?>
-        get() = dataStore.data.map {
-            it[USERTYPE_KEY]
-        }
-
-    suspend fun saveUserData(token: String, username: String, userType: Int){
+    /**
+     * Funcion que guarda los datos del usuario logeado
+     * @param token Token del usuario
+     * @param username Nombre de usuario del usuario
+     */
+    suspend fun saveUserData(token: String, username: String){
         dataStore.edit{
             it[TOKEN_KEY] = token
             it[USERNAME_KEY] = username
-            it[USERTYPE_KEY] = userType
         }
     }
 
+    /**
+     * Funcion que elimina todos los datos almacenados del usuario
+     */
     suspend fun clear(){
         dataStore.edit{
             it.clear()
@@ -45,7 +47,6 @@ class DataStoreHelper(context: Context) {
     companion object {
         private  val TOKEN_KEY = preferencesKey<String>("token")
         private  val USERNAME_KEY = preferencesKey<String>("username")
-        private  val USERTYPE_KEY = preferencesKey<Int>("userType")
         private const val SHARED_PREFERENCES_NAME = "com.hss.hssbanksystem"
     }
 }

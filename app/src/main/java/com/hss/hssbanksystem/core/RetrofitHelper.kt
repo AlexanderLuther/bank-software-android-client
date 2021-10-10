@@ -8,12 +8,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitHelper {
 
+    /**
+     * URL base para la comunicacion con el servidor remoto
+     */
     companion object {
-        private const val PORT = 3000
-        private const val IP = "192.168.1.45"
-        private const val BASE_URL = "http://$IP:$PORT/"
+        private const val BASE_URL = "https://analisis-bank-server.herokuapp.com/"
     }
 
+    /**
+     * Funcion que construye la api para la comunicacion con el servidor
+     */
     fun <T> buildApi(
         api: Class<T>,
         authenticationToken: String? = null
