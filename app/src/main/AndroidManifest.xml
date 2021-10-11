@@ -5,12 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HSSBankSystem">
+
         <activity
             android:name=".ui.view.base.HomeActivity"
             android:exported="true"
@@ -20,14 +20,11 @@
             android:name=".ui.view.base.NoLoggedUserActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.view.base.LoggedUserActivity"
-            android:exported="true" />
-        <activity
             android:name=".ui.view.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

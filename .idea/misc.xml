@@ -3,10 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v23/splash_screen_background.xml" value="0.1484375" />
         <entry key="app/src/main/res/drawable/home.xml" value="0.1484375" />
+        <entry key="app/src/main/res/drawable/logout.xml" value="0.1484375" />
+        <entry key="app/src/main/res/drawable/password.xml" value="0.1484375" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1484375" />
+        <entry key="app/src/main/res/drawable/splah_screen.xml" value="0.3932291666666667" />
+        <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.3932291666666667" />
+        <entry key="app/src/main/res/drawable/splash_screen_background.xml" value="0.1484375" />
+        <entry key="app/src/main/res/drawable/user.xml" value="0.1484375" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_logged_user.xml" value="0.1833839918946302" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3442028985507246" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/layout/content_home.xml" value="0.3442028985507246" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3442028985507246" />
