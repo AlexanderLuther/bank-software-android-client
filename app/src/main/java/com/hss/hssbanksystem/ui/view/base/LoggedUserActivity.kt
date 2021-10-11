@@ -9,4 +9,6 @@ class LoggedUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logged_user)
     }
+
+
 }
