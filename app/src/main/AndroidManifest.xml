@@ -12,12 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HSSBankSystem">
         <activity
-            android:name=".ui.view.base.HomeActivity"
-            android:exported="true"
-            android:label="@string/title_activity_home"
-            android:theme="@style/Theme.HSSBankSystem.NoActionBar" />
-        <activity
             android:name=".ui.view.base.LoggedUserActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.view.base.HomeActivity"
             android:exported="true"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.HSSBankSystem.NoActionBar" />

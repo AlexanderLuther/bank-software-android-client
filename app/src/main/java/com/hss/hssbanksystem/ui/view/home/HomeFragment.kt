@@ -1,9 +1,11 @@
 package com.hss.hssbanksystem.ui.view.home
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.data.network.UserApi
 import com.hss.hssbanksystem.data.repository.UserRepository
 import com.hss.hssbanksystem.databinding.FragmentHomeBinding

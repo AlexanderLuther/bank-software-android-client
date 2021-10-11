@@ -7,6 +7,7 @@ import androidx.lifecycle.asLiveData
 import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.core.DataStoreHelper
 import com.hss.hssbanksystem.core.startNewActivity
+import com.hss.hssbanksystem.ui.view.base.LoggedUserActivity
 import com.hss.hssbanksystem.ui.view.base.NoLoggedUserActivity
 
 class MainActivity : AppCompatActivity() {

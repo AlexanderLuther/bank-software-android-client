@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/password.xml" value="0.3932291666666667" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_logged_user.xml" value="0.3770833333333333" />
-        <entry key="app/src/main/res/layout/activity_no_logged_user.xml" value="0.296195652173913" />
+        <entry key="app/src/main/res/layout/activity_logged_user_activity.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_no_logged_user.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/content_home.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.13229166666666667" />
@@ -14,6 +17,12 @@
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.3770833333333333" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/menu/home.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/menu/home_activity_drawer.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/menu/home_options.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/menu/logged_user_menu.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/menu/menu_no_logged_user.xml" value="0.13229166666666667" />
       </map>
