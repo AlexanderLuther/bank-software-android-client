@@ -7,7 +7,7 @@ import androidx.lifecycle.asLiveData
 import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.core.DataStoreHelper
 import com.hss.hssbanksystem.core.startNewActivity
-import com.hss.hssbanksystem.ui.view.base.LoggedUserActivity
+import com.hss.hssbanksystem.ui.view.base.HomeActivity
 import com.hss.hssbanksystem.ui.view.base.NoLoggedUserActivity
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         val dataStoreHelper = DataStoreHelper(this)
         dataStoreHelper.authenticationToken.asLiveData().observe(this, Observer {
-            val activity = if(it == null) NoLoggedUserActivity::class.java else LoggedUserActivity::class.java
+            val activity = if(it == null) NoLoggedUserActivity::class.java else HomeActivity::class.java
             startNewActivity(activity)
         })
     }

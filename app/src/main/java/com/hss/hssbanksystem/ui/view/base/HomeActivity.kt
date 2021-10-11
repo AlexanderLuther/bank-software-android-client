@@ -2,6 +2,7 @@ package com.hss.hssbanksystem.ui.view.base
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -11,41 +12,75 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.hss.hssbanksystem.ui.view.base.databinding.ActivityHomeBinding
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.hss.hssbanksystem.R
+import com.hss.hssbanksystem.core.DataStoreHelper
+import com.hss.hssbanksystem.core.RetrofitHelper
+import com.hss.hssbanksystem.core.startNewActivity
+import com.hss.hssbanksystem.data.network.AuthenticationApi
+import com.hss.hssbanksystem.data.network.UserApi
+import com.hss.hssbanksystem.data.repository.AuthenticationRepository
+import com.hss.hssbanksystem.data.repository.UserRepository
+import com.hss.hssbanksystem.databinding.ActivityHomeBinding
+import com.hss.hssbanksystem.databinding.FragmentLoginBinding
+import com.hss.hssbanksystem.ui.viewmodel.HomeViewModel
+import com.hss.hssbanksystem.ui.viewmodel.authentication.AuthenticationViewModel
+import com.hss.hssbanksystem.ui.viewmodel.base.ViewModelFactory
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var dataStoreHelper : DataStoreHelper
+    private lateinit var repository : UserRepository
+    private lateinit var viewModel : HomeViewModel
+    private val retrofitHelper = RetrofitHelper()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Inicializar todas las variables
+        repository = UserRepository(retrofitHelper.buildApi(UserApi::class.java))
+        viewModel =  ViewModelProvider(this, ViewModelFactory(repository)).get(HomeViewModel::class.java)
+        dataStoreHelper = DataStoreHelper(this@HomeActivity)
+
+        //Setear ViewBinding
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Setear barra de menu
         setSupportActionBar(binding.appBarHome.toolbar)
 
         binding.appBarHome.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_home)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.navHomeFragment
             ), drawerLayout
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        //Accion a realizar cuando se presiona el menu Cerrar Sesion
+        navView.menu.findItem(R.id.navLogout).setOnMenuItemClickListener {
+            logout()
+            Toast.makeText(baseContext, "Cerrando sesion", Toast.LENGTH_SHORT).show()
+            true
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.home, menu)
         return true
     }
@@ -54,4 +89,19 @@ class HomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_home)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
+    /**
+     * Funcion que realiza el cerrado de sesion
+     */
+    private fun logout() = lifecycleScope.launch {
+        val token = dataStoreHelper.authenticationToken.first()
+        val api = retrofitHelper.buildApi(AuthenticationApi::class.java, token)
+        viewModel.logout(api)
+        dataStoreHelper.clear()
+        finish()
+        startNewActivity(NoLoggedUserActivity::class.java)
+    }
+
+
 }

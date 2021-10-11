@@ -17,7 +17,7 @@ import com.hss.hssbanksystem.data.network.AuthenticationApi
 import com.hss.hssbanksystem.data.repository.AuthenticationRepository
 import com.hss.hssbanksystem.databinding.FragmentLoginBinding
 import com.hss.hssbanksystem.ui.view.base.BaseFragment
-import com.hss.hssbanksystem.ui.view.base.LoggedUserActivity
+import com.hss.hssbanksystem.ui.view.base.HomeActivity
 import com.hss.hssbanksystem.ui.viewmodel.authentication.AuthenticationViewModel
 import kotlinx.coroutines.launch
 
@@ -64,7 +64,7 @@ class LoginFragment : BaseFragment<AuthenticationViewModel, FragmentLoginBinding
                 is Resource.Success -> {
                     lifecycleScope.launch{
                         viewModel.saveUserData(it.value.token, it.value.username)
-                        requireActivity().startNewActivity(LoggedUserActivity::class.java)
+                        requireActivity().startNewActivity(HomeActivity::class.java)
                     }
                 }
                 is Resource.Failure -> handleApiError(it)

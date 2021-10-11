@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.data.network.UserApi
 import com.hss.hssbanksystem.data.repository.UserRepository
@@ -19,9 +20,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, UserReposi
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.button.setOnClickListener {
-            logout()
-        }
     }
 
     override fun getViewModel() = HomeViewModel::class.java
