@@ -6,7 +6,7 @@ import com.hss.hssbanksystem.data.network.AuthenticationApi
 class AuthenticationRepository(
     private val api: AuthenticationApi,
     private val dataStoreHelper: DataStoreHelper
-    ) : BaseRepository() {
+) : BaseRepository() {
 
     suspend  fun login(username: String, password: String) = safeApiCall{
         api.login(username, password)

@@ -1,33 +1,39 @@
 <resources>
     <string name="app_name">HSSBankSystem</string>
+
     <string name="username">Nombre de Usuario</string>
     <string name="password">Contraseña</string>
     <string name="login">Iniciar Sesion</string>
     <string name="register">Registrarme</string>
-    <string name="todo">TODO</string>
+    <string name="forgetPassword">Olvide mi contraseña</string>
+    <string name="cui">CUI</string>
+
     <string name="helperUsername">(*)Ingrese su nombre de usuario.</string>
     <string name="helperPassword">(*)Ingrese su contraseña.</string>
-    <string name="forgetPassword">Olvide mi contraseña</string>
+    <string name="helperCUI">(*)Ingrese su numero de CUI.</string>
+
+    <string name="cuiRequired">CUI obligatorio.</string>
+    <string name="noValidCui">CUI no valido.</string>
+    <string name="usernameRequired">Nombre de usuario obligatorio.</string>
+    <string name="passwordRequired">Contraseña obligatoria.</string>
+
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="todo">TODO</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
     <string name="title_activity_no_logged_user">NoLoggedUserActivity</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="usernameRequired">Nombre de usuario obligatorio.</string>
-    <string name="passwordRequired">Contraseña obligatoria.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="cui">CUI</string>
-    <string name="helperCUI">(*)Ingrese su numero de CUI.</string>
-    <string name="cuiRequired">CUI obligatorio.</string>
-    <string name="noValidCui">CUI no valido.</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="navHome">Inicio</string>
+    <string name="navLogout">Cerrar Sesion</string>
+    <string name="companyName">HSS Bank System</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 
 </resources>

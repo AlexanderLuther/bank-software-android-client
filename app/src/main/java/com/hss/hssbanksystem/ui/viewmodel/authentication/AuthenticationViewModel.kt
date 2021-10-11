@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class AuthenticationViewModel(
     private val repository: AuthenticationRepository
-    ): BaseViewModel(repository) {
+): BaseViewModel(repository) {
 
     private val _authenticationModel : MutableLiveData<Resource<AuthenticationModel>> = MutableLiveData()
     val authenticationModel: LiveData<Resource<AuthenticationModel>>

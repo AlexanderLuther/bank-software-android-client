@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/logged_user_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@+id/navHomeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navHomeFragment"
         android:name="com.hss.hssbanksystem.ui.view.home.HomeFragment"
-        android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
 </navigation>

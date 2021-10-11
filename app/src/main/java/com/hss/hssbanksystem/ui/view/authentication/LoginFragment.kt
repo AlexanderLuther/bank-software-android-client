@@ -61,14 +61,14 @@ class LoginFragment : BaseFragment<AuthenticationViewModel, FragmentLoginBinding
         viewModel.authenticationModel.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(it is Resource.Loading)
             when (it) {
-                 is Resource.Success -> {
-                     lifecycleScope.launch{
-                         viewModel.saveUserData(it.value.token, it.value.username)
-                         requireActivity().startNewActivity(HomeActivity::class.java)
-                     }
-                 }
-                 is Resource.Failure -> handleApiError(it)
-             }
+                is Resource.Success -> {
+                    lifecycleScope.launch{
+                        viewModel.saveUserData(it.value.token, it.value.username)
+                        requireActivity().startNewActivity(HomeActivity::class.java)
+                    }
+                }
+                is Resource.Failure -> handleApiError(it)
+            }
         })
     }
 
