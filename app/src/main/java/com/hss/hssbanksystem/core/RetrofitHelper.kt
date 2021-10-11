@@ -31,12 +31,12 @@ class RetrofitHelper {
                             it.header("token", "$authenticationToken")
                         }.build())
                     }.also { client ->
-                    if(BuildConfig.DEBUG){
-                        val loggin = HttpLoggingInterceptor()
-                        loggin.level = HttpLoggingInterceptor.Level.BODY
-                        client.addInterceptor(loggin)
-                    }
-                }.build())
+                        if(BuildConfig.DEBUG){
+                            val loggin = HttpLoggingInterceptor()
+                            loggin.level = HttpLoggingInterceptor.Level.BODY
+                            client.addInterceptor(loggin)
+                        }
+                    }.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(api)

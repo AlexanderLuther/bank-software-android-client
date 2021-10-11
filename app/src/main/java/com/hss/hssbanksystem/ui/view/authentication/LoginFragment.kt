@@ -1,11 +1,13 @@
 package com.hss.hssbanksystem.ui.view.authentication
 
 import android.os.Bundle
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.data.Resource
@@ -18,6 +20,7 @@ import com.hss.hssbanksystem.data.repository.AuthenticationRepository
 import com.hss.hssbanksystem.databinding.FragmentLoginBinding
 import com.hss.hssbanksystem.ui.view.base.BaseFragment
 import com.hss.hssbanksystem.ui.view.base.LoggedUserActivity
+import com.hss.hssbanksystem.ui.view.base.NoLoggedUserActivity
 import com.hss.hssbanksystem.ui.viewmodel.authentication.AuthenticationViewModel
 import kotlinx.coroutines.launch
 
@@ -61,14 +64,14 @@ class LoginFragment : BaseFragment<AuthenticationViewModel, FragmentLoginBinding
         viewModel.authenticationModel.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(it is Resource.Loading)
             when (it) {
-                 is Resource.Success -> {
-                     lifecycleScope.launch{
-                         viewModel.saveUserData(it.value.token, it.value.username)
-                         requireActivity().startNewActivity(LoggedUserActivity::class.java)
-                     }
-                 }
-                 is Resource.Failure -> handleApiError(it)
-             }
+                is Resource.Success -> {
+                    lifecycleScope.launch{
+                        viewModel.saveUserData(it.value.token, it.value.username)
+                        requireActivity().startNewActivity(LoggedUserActivity::class.java)
+                    }
+                }
+                is Resource.Failure -> handleApiError(it)
+            }
         })
     }
 

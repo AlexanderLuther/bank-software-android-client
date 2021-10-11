@@ -50,4 +50,3 @@ class DataStoreHelper(context: Context) {
         private const val SHARED_PREFERENCES_NAME = "com.hss.hssbanksystem"
     }
 }
-
