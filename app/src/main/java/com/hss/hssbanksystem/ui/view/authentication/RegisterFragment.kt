@@ -49,14 +49,21 @@ class RegisterFragment : BaseFragment<AuthenticationViewModel, FragmentRegisterB
             else binding.passwordLayout.error = null
         }
 
+        //Mostrar un error si el correo electronico esta vacio
+        binding.emailLayout.editText?.addTextChangedListener {
+            if(binding.emailLayout.editText?.text.toString().trim().isEmpty()) binding.emailLayout.error = getString(R.string.emailRequired)
+            else binding.emailLayout.error = null
+        }
+
         //Validar los campos y procesar la solicitud de registro de nuevo usuario
         binding.registerButton.setOnClickListener {
             hideKeyboard(activity)
             val username = binding.usernameLayout.editText?.text.toString().trim()
             val password = binding.passwordLayout.editText?.text.toString().trim()
             val cui = binding.cuiLayout.editText?.text.toString().trim()
-            if(validateData(username, password, cui)){
-                viewModel.createUser(username, password, 1, cui)
+            val email = binding.emailLayout.editText?.text.toString().trim()
+            if(validateData(username, password, cui, email)){
+                viewModel.createUser(username, password, 1, cui, email)
             }
         }
 
@@ -78,11 +85,12 @@ class RegisterFragment : BaseFragment<AuthenticationViewModel, FragmentRegisterB
     /**
      * Funcion que valida que los campos obligatorios no esten vacios, de estarlo muetra el error
      */
-    private fun validateData(username: String, password:String, cui:String):Boolean {
+    private fun validateData(username: String, password:String, cui:String, email: String):Boolean {
         if(username.isEmpty()) binding.usernameLayout.error = getString(R.string.usernameRequired)
         if(password.isEmpty()) binding.passwordLayout.error = getString(R.string.passwordRequired)
         if(cui.isEmpty()) binding.cuiLayout.error = getString(R.string.cuiRequired)
-        return username.isNotEmpty() && password.isNotEmpty() && cui.isNotEmpty()
+        if(email.isEmpty()) binding.emailLayout.error = getString(R.string.emailRequired)
+        return username.isNotEmpty() && password.isNotEmpty() && cui.isNotEmpty() && email.isNotEmpty()
     }
 
     /**

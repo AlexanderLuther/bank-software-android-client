@@ -12,8 +12,8 @@ class AuthenticationRepository(
         api.login(username, password)
     }
 
-    suspend fun createUser(username: String, password: String, userType: Int, cui: String) = safeApiCall{
-        api.createUser(username, password, userType, cui)
+    suspend fun createUser(username: String, password: String, userType: Int, cui: String, email: String) = safeApiCall{
+        api.createUser(username, password, userType, cui, email)
     }
 
     suspend fun saveUserData(token:String, username:String){

@@ -10,6 +10,11 @@
             android:title="@string/navHome" />
 
         <item
+            android:id="@+id/navProfileFragment"
+            android:icon="@drawable/user"
+            android:title="@string/navProfile" />
+
+        <item
             android:id="@+id/navLogout"
             android:icon="@drawable/logout"
             android:title="@string/navLogout" />

@@ -33,7 +33,8 @@ interface AuthenticationApi {
         @Field("username") username: String,
         @Field("password") password: String,
         @Field("user_type") userType: Int,
-        @Field("cui") cui: String
+        @Field("cui") cui: String,
+        @Field("email") email: String
     ) : AuthenticationModel
 
     /**

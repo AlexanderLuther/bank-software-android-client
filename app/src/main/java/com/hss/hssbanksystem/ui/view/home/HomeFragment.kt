@@ -1,17 +1,13 @@
 package com.hss.hssbanksystem.ui.view.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.data.network.UserApi
 import com.hss.hssbanksystem.data.repository.UserRepository
 import com.hss.hssbanksystem.databinding.FragmentHomeBinding
 import com.hss.hssbanksystem.ui.view.base.BaseFragment
-import com.hss.hssbanksystem.ui.viewmodel.HomeViewModel
+import com.hss.hssbanksystem.ui.viewmodel.home.HomeViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
