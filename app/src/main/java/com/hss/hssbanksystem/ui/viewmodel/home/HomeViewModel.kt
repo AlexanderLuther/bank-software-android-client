@@ -1,4 +1,4 @@
-package com.hss.hssbanksystem.ui.viewmodel
+package com.hss.hssbanksystem.ui.viewmodel.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -7,5 +7,8 @@ class UserRepository(
     private val api: UserApi,
 ): BaseRepository() {
 
+    suspend fun updatePassword(oldPassword:String, newPassword:String) = safeApiCall {
+        api.uodatePassword(oldPassword, newPassword)
+    }
 
 }

@@ -34,9 +34,9 @@ class AuthenticationViewModel(
      * @param userType Tipo de usuario, siempre es el valor 1
      * @param cui Cui del usuario a crear
      */
-    fun createUser(username: String, password: String, userType: Int, cui:String) = viewModelScope.launch {
+    fun createUser(username: String, password: String, userType: Int, cui:String, email: String) = viewModelScope.launch {
         _authenticationModel.value = Resource.Loading
-        _authenticationModel.value = repository.createUser(username, password, userType, cui)
+        _authenticationModel.value = repository.createUser(username, password, userType, cui, email)
     }
 
     /**

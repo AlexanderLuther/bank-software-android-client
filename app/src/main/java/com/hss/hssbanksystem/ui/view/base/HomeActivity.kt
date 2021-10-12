@@ -20,12 +20,9 @@ import com.hss.hssbanksystem.core.RetrofitHelper
 import com.hss.hssbanksystem.core.startNewActivity
 import com.hss.hssbanksystem.data.network.AuthenticationApi
 import com.hss.hssbanksystem.data.network.UserApi
-import com.hss.hssbanksystem.data.repository.AuthenticationRepository
 import com.hss.hssbanksystem.data.repository.UserRepository
 import com.hss.hssbanksystem.databinding.ActivityHomeBinding
-import com.hss.hssbanksystem.databinding.FragmentLoginBinding
-import com.hss.hssbanksystem.ui.viewmodel.HomeViewModel
-import com.hss.hssbanksystem.ui.viewmodel.authentication.AuthenticationViewModel
+import com.hss.hssbanksystem.ui.viewmodel.home.HomeViewModel
 import com.hss.hssbanksystem.ui.viewmodel.base.ViewModelFactory
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -65,7 +62,7 @@ class HomeActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navHomeFragment
+                R.id.navHomeFragment, R.id.navProfileFragment
             ), drawerLayout
         )
 
