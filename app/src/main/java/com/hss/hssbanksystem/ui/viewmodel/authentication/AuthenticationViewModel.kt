@@ -39,6 +39,11 @@ class AuthenticationViewModel(
         _authenticationModel.value = repository.createUser(username, password, userType, cui, email)
     }
 
+    fun recoverPassword(username: String) = viewModelScope.launch{
+        _authenticationModel.value = Resource.Loading
+        _authenticationModel.value = repository.recoverPassword(username)
+    }
+
     /**
      * Funcion que elimina todos los datos de la variable _authenticationModel
      */

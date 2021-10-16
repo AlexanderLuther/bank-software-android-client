@@ -51,6 +51,7 @@
     <string name="navCancellationCard">Cancelación de Tarjeta</string>
     <string name="navLoan">Solicitud de Prestamo</string>
     <string name="paasswordRecovery">Recuperar Contraseña</string>
+    <string name="successPasswordRecovery">Recuperacion exitosa, verifique el correo electronico vinculado a su cuenta.</string>
 
 
 </resources>

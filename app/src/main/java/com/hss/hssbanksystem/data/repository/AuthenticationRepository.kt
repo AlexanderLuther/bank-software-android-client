@@ -16,6 +16,9 @@ class AuthenticationRepository(
         api.createUser(username, password, userType, cui, email)
     }
 
+    suspend fun recoverPassword(username: String) = safeApiCall{
+        api.recoverPassword(username)
+    }
     suspend fun saveUserData(token:String, username:String){
         dataStoreHelper.saveUserData(token, username)
     }

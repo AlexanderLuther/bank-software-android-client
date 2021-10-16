@@ -37,6 +37,17 @@ interface AuthenticationApi {
         @Field("email") email: String
     ) : AuthenticationModel
 
+
+    /**
+     * Funcion que ejecuta una peticion http POST
+     * @param username Nombre de usuario que desea recuperar su contraseña
+     */
+    @FormUrlEncoded
+    @POST("user/password_recovery")
+    suspend fun recoverPassword(
+        @Field("username") username: String
+    ) : AuthenticationModel
+
     /**
      * Funcion que ejecuta una peticion https POST
      */
