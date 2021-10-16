@@ -62,7 +62,8 @@ class HomeActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navHomeFragment, R.id.navProfileFragment
+                R.id.navHomeFragment, R.id.navProfileFragment, R.id.navBankAccountRequestFragment, R.id.navCreditCardRequestFragment,
+                R.id.navDebitCardRequestFragment,  R.id.navLoanRequestFragment, R.id.navCancellationCardRequestFragment
             ), drawerLayout
         )
 
