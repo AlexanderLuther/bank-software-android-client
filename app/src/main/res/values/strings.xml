@@ -45,6 +45,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="navCreditCard">Solicitud de Tarjeta de Credito</string>
+    <string name="navDebitCard">Solicitud de Tarjeta de Debito</string>
+    <string name="navBankAccount">Solicitud de Cuenta Bancaria</string>
+    <string name="navCancellationCard">Cancelación de Tarjeta</string>
+    <string name="navLoan">Solicitud de Prestamo</string>
 
 
 </resources>

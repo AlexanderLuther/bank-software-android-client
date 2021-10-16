@@ -15,6 +15,31 @@
             android:title="@string/navProfile" />
 
         <item
+            android:id="@+id/navBankAccountRequestFragment"
+            android:icon="@drawable/account_request"
+            android:title="@string/navBankAccount" />
+
+        <item
+            android:id="@+id/navCreditCardRequestFragment"
+            android:icon="@drawable/card"
+            android:title="@string/navCreditCard" />
+
+        <item
+            android:id="@+id/navDebitCardRequestFragment"
+            android:icon="@drawable/card"
+            android:title="@string/navDebitCard" />
+
+        <item
+            android:id="@+id/navCancellationCardRequestFragment"
+            android:icon="@drawable/card_cancellation"
+            android:title="@string/navCancellationCard" />
+
+        <item
+            android:id="@+id/navLoanRequestFragment"
+            android:icon="@drawable/loan"
+            android:title="@string/navLoan" />
+
+        <item
             android:id="@+id/navLogout"
             android:icon="@drawable/logout"
             android:title="@string/navLogout" />
