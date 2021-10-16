@@ -50,6 +50,7 @@
     <string name="navBankAccount">Solicitud de Cuenta Bancaria</string>
     <string name="navCancellationCard">Cancelación de Tarjeta</string>
     <string name="navLoan">Solicitud de Prestamo</string>
+    <string name="paasswordRecovery">Recuperar Contraseña</string>
 
 
 </resources>

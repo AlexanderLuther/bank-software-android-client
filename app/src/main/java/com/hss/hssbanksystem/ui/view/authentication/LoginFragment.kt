@@ -57,6 +57,12 @@ class LoginFragment : BaseFragment<AuthenticationViewModel, FragmentLoginBinding
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
 
+        //Cambiar hacia el fragment de Recuperacion de Contraseña
+        binding.forgotPasswordButton.setOnClickListener {
+            viewModel.clear()
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToPasswordRecoveryFragment())
+        }
+
         //Setear el patron observador
         viewModel.authenticationModel.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(it is Resource.Loading)
