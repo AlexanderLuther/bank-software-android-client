@@ -67,8 +67,13 @@ fun Fragment.handleApiError(failure: Resource.Failure, retry: (() -> Unit)? = nu
         failure.errorCode == 401 -> (this as BaseFragment<*,*,*>).logout()
         else -> {
             if(failure != null){
-                val error = JSONTokener(failure.errorBody?.string().toString()).nextValue() as JSONObject
-                requireView().snackbar(error.getString("information_message"))
+                try{
+                    val error = JSONTokener(failure.errorBody?.string().toString()).nextValue() as JSONObject
+                    requireView().snackbar(error.getString("information_message"))
+                } catch (e: ClassCastException){
+                    requireView().snackbar(failure.errorBody?.string().toString())
+                }
+
             }
         }
     }

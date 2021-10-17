@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.core.*
 import com.hss.hssbanksystem.data.Resource
@@ -59,7 +60,7 @@ class PasswordRecoveryFragment : BaseFragment<AuthenticationViewModel, FragmentP
             when (it) {
                 is Resource.Success -> {
                     requireView().snackbar(getString(R.string.successPasswordRecovery))
-                    requireActivity().startNewActivity(NoLoggedUserActivity::class.java)
+                    findNavController().navigate(PasswordRecoveryFragmentDirections.actionPasswordRecoveryFragmentToLoginFragment())
                 }
                 is Resource.Failure -> handleApiError(it)
             }

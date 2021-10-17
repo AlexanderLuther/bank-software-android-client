@@ -51,7 +51,21 @@
     <string name="navCancellationCard">Cancelación de Tarjeta</string>
     <string name="navLoan">Solicitud de Prestamo</string>
     <string name="paasswordRecovery">Recuperar Contraseña</string>
-    <string name="successPasswordRecovery">Recuperacion exitosa, verifique el correo electronico vinculado a su cuenta.</string>
+    <string name="successPasswordRecovery">Recuperacion exitosa, verifique su correo electronico.</string>
+    <string name="helperLoanAmount">(*)Ingrese la cantidad que desea solicitar.</string>
+    <string name="loanAmount">Cantidad Solicitada</string>
+    <string name="monthlyIncome">Ingresos Mensuales</string>
+    <string name="helperMontlhyIncome">(*)Ingrese sus ingresos mensuales.</string>
+    <string name="helperLoanCause">(*)Ingrese el motivo del prestamo</string>
+    <string name="loanCause">Motivo del Prestamo</string>
+    <string name="helperGuarantorCui">(*)Ingrese el CUI del fiador.</string>
+    <string name="guarantorCui">CUI del Fiador</string>
+    <string name="request">Solicitar</string>
+    <string name="helperAccountType">(*)Seleccione el tipo de cuenta que desea solicitar.</string>
+    <string name="accountType1">Cuenta de Ahorro</string>
+    <string name="accountType2">Cuenta Monetaria</string>
+    <string name="helperCreditCardLimit">(*)Ingrese el limite crediticio deseado para la tarjeta.</string>
+    <string name="creditCardLimit">Limite de Credito Deseado</string>
 
 
 </resources>
