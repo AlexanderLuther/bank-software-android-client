@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">HSSBankSystem</string>
+    <string name="companyName">HSS Bank System</string>
 
     <string name="username">Nombre de Usuario</string>
     <string name="password">Contraseña</string>
@@ -11,6 +12,29 @@
     <string name="email">Correo Electrónico</string>
     <string name="forgetPassword">Olvide mi contraseña</string>
     <string name="cui">CUI</string>
+    <string name="paasswordRecovery">Recuperar Contraseña</string>
+    <string name="successPasswordRecovery">Recuperacion exitosa, verifique su correo electronico.</string>
+    <string name="loanAmount">Cantidad Solicitada</string>
+    <string name="monthlyIncome">Ingresos Mensuales</string>
+    <string name="loanCause">Motivo del Prestamo</string>
+    <string name="guarantorCui">CUI del Fiador</string>
+    <string name="request">Solicitar</string>
+    <string name="accountType1">Cuenta de Ahorro</string>
+    <string name="accountType2">Cuenta Monetaria</string>
+    <string name="creditCardLimit">Limite de Credito Deseado</string>
+    <string name="selectAccount">Seleccionar Cuenta a Vincular</string>
+    <string name="noAccountSelected">No se ha seleccionado ninguna cuenta.</string>
+    <string name="name">Nombre</string>
+    <string name="surName">Apellido</string>
+    <string name="occupation">Ocupación</string>
+    <string name="updateData">Actualizar Datos</string>
+    <string name="female">Femenino</string>
+    <string name="male">Masculino</string>
+    <string name="civilStatus">Estado Civil</string>
+    <string name="gender">Genero</string>
+    <string name="birthDay">Fecha de Nacimiento</string>
+    <string name="phoneNumber">Numero de Telefono</string>
+    <string name="address">Dirección</string>
 
     <string name="helperUsername">(*)Ingrese su nombre de usuario.</string>
     <string name="helperPassword">(*)Ingrese su contraseña.</string>
@@ -18,6 +42,20 @@
     <string name="helperOldPassword">(*)Ingrese su contraseña actual .</string>
     <string name="helperCUI">(*)Ingrese su numero de CUI.</string>
     <string name="helperEmail">(*)Ingrese su correo electrónico.</string>
+    <string name="helperCreditCardLimit">(*)Ingrese el limite crediticio deseado para la tarjeta.</string>
+    <string name="helperMontlhyIncome">(*)Ingrese sus ingresos mensuales.</string>
+    <string name="helperLoanCause">(*)Ingrese el motivo del prestamo</string>
+    <string name="helperLoanAmount">(*)Ingrese la cantidad que desea solicitar.</string>
+    <string name="helperAccountType">(*)Seleccione el tipo de cuenta que desea solicitar.</string>
+    <string name="helperGuarantorCui">(*)Ingrese el CUI del fiador.</string>
+    <string name="helperGender">(*)Seleccione su genero.</string>
+    <string name="helperCivilStatus">(*)Ingrese su estado civil.</string>
+    <string name="helperOccupation">(*)Ingrese su ocupacion.</string>
+    <string name="helperName">(*)Ingrese su nombre.</string>
+    <string name="helperSurname">(*)Ingrese su apellido.</string>
+    <string name="helperAddress">(*)Ingrese su direccion.</string>
+    <string name="helperPhoneNumber">(*)Ingrese su numero de telefono.</string>
+    <string name="helperBirthDay">(*)Ingrese su fecha de nacimiento.</string>
 
     <string name="cuiRequired">CUI obligatorio.</string>
     <string name="noValidCui">CUI no valido.</string>
@@ -26,32 +64,42 @@
     <string name="oldPasswordRequired">Contraseña actual obligatoria.</string>
     <string name="newPasswordRequired">Nueva contraseña obligatoria.</string>
     <string name="emailRequired">Correo electrónico obligatorio.</string>
+    <string name="loanAmountRequired">Cantidad solicitada obligatoria.</string>
+    <string name="incomeRequired">Ingresos mensuales obligatorios.</string>
+    <string name="causeRequired">Motivo obligatorio.</string>
 
     <string name="navHome">Inicio</string>
     <string name="navProfile">Perfil</string>
     <string name="navLogout">Cerrar Sesion</string>
-    <string name="companyName">HSS Bank System</string>
-
-    <string name="title_activity_home">Inicio</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="todo">TODO</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
-    <string name="title_activity_no_logged_user">NoLoggedUserActivity</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
     <string name="navCreditCard">Solicitud de Tarjeta de Credito</string>
     <string name="navDebitCard">Solicitud de Tarjeta de Debito</string>
     <string name="navBankAccount">Solicitud de Cuenta Bancaria</string>
     <string name="navCancellationCard">Cancelación de Tarjeta</string>
     <string name="navLoan">Solicitud de Prestamo</string>
-    <string name="paasswordRecovery">Recuperar Contraseña</string>
-    <string name="successPasswordRecovery">Recuperacion exitosa, verifique el correo electronico vinculado a su cuenta.</string>
+
+
+    <string name="title_activity_home">Inicio</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="todo">TODO</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_no_logged_user">NoLoggedUserActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="successDataUpdate">Actualizacion de datos exitosa.</string>
+    <string name="phoneNumberRequired">Numero de telefono obligatorio.</string>
+    <string name="noValidPhoneNumber">Numero de telefono no valido.</string>
+    <string name="addressRequired">Direccion obligatoria.</string>
+    <string name="civilStatusRequired">Estado civil obligatorio.</string>
+    <string name="occupationRequired">Ocupacion obligatoria.</string>
+    <string name="helperCardId">(*)Ingrese el numero de la tarjeta.</string>
+    <string name="cardId">Numero de Tarjeta</string>
+    <string name="cancellationCauseHelper">(*)Ingrese el motivo de la cancelacion.</string>
+    <string name="cancellationCause">Motivo de Cancelacion</string>
+    <string name="selectCardTypeHelper">(*)Seleccione el tipo de tarjeta.</string>
+    <string name="debitCard">Tarjeta de Debito</string>
+    <string name="creditCard">Tarjeta de Credito</string>
+    <string name="carIdRequired">Numero de tarjeta obligatorio.</string>
 
 
 </resources>

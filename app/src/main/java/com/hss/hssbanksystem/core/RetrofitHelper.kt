@@ -32,13 +32,14 @@ class RetrofitHelper {
                         }.build())
                     }.also { client ->
                         if(BuildConfig.DEBUG){
-                            val loggin = HttpLoggingInterceptor()
-                            loggin.level = HttpLoggingInterceptor.Level.BODY
-                            client.addInterceptor(loggin)
+                            val login = HttpLoggingInterceptor()
+                            login.level = HttpLoggingInterceptor.Level.BODY
+                            client.addInterceptor(login)
                         }
                     }.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(api)
     }
+
 }

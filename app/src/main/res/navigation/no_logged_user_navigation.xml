@@ -27,5 +27,9 @@
         android:id="@+id/passwordRecoveryFragment"
         android:name="com.hss.hssbanksystem.ui.view.authentication.PasswordRecoveryFragment"
         android:label="fragment_password_recovery"
-        tools:layout="@layout/fragment_password_recovery" />
+        tools:layout="@layout/fragment_password_recovery" >
+        <action
+            android:id="@+id/action_passwordRecoveryFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

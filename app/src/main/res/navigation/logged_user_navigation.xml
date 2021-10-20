@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navProfileFragment_to_updatePasswordFragment"
             app:destination="@id/updatePasswordFragment" />
+        <action
+            android:id="@+id/action_navProfileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
 
     <fragment
@@ -28,6 +31,64 @@
         tools:layout="@layout/fragment_update_password" >
         <action
             android:id="@+id/action_updatePasswordFragment_to_navProfileFragment"
+            app:destination="@id/navProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navBankAccountRequestFragment"
+        android:name="com.hss.hssbanksystem.ui.view.request.BankAccountRequestFragment"
+        android:label="@string/navBankAccount"
+        tools:layout="@layout/fragment_bank_account_request" >
+        <action
+            android:id="@+id/action_navBankAccountRequestFragment_to_navHomeFragment"
+            app:destination="@id/navHomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navDebitCardRequestFragment"
+        android:name="com.hss.hssbanksystem.ui.view.request.DebitCardRequestFragment"
+        android:label="@string/navDebitCard"
+        tools:layout="@layout/fragment_debit_card_request" >
+        <action
+            android:id="@+id/action_navDebitCardRequestFragment_to_navHomeFragment"
+            app:destination="@id/navHomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navCreditCardRequestFragment"
+        android:name="com.hss.hssbanksystem.ui.view.request.CreditCardRequestFragment"
+        android:label="@string/navCreditCard"
+        tools:layout="@layout/fragment_credit_card_request" >
+        <action
+            android:id="@+id/action_navCreditCardRequestFragment_to_navHomeFragment"
+            app:destination="@id/navHomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navCancellationCardRequestFragment"
+        android:name="com.hss.hssbanksystem.ui.view.request.CardCancellationRequestFragment"
+        android:label="@string/navCancellationCard"
+        tools:layout="@layout/fragment_card_cancellation_request" >
+        <action
+            android:id="@+id/action_navCancellationCardRequestFragment_to_navHomeFragment"
+            app:destination="@id/navHomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navLoanRequestFragment"
+        android:name="com.hss.hssbanksystem.ui.view.request.LoanRequestFragment"
+        android:label="@string/navLoan"
+        tools:layout="@layout/fragment_loan_request">
+        <action
+            android:id="@+id/action_navLoanRequestFragment_to_navHomeFragment"
+            app:destination="@id/navHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.hss.hssbanksystem.ui.view.user.EditProfileFragment"
+        android:label="@string/updateData" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_navProfileFragment"
             app:destination="@id/navProfileFragment" />
     </fragment>
 
