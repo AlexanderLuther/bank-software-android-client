@@ -10,4 +10,23 @@ class RequestRepository(
         api.requestBankAccount(type)
     }
 
+    suspend fun requestLoan(amount: Double, income: Double, cause: String, cui: String) = safeApiCall {
+        api.requestLoan(amount, income, cause, cui)
+    }
+
+    suspend fun requestCreditCard(income: Double, amount: Double) = safeApiCall {
+        api.requestCreditCard(income, amount)
+    }
+
+    suspend fun requestDebitCard(id: String) = safeApiCall {
+        api.requestDebitCard(id)
+    }
+
+    suspend fun getAccountsAvailableForDebitCard() = safeApiCall{
+        api.getAccountsAvailableForDebitCard()
+    }
+
+    suspend fun  requestCardCancellation(idCard: String, cardType: Int, cause: String) = safeApiCall {
+        api.requestCardCancellation(idCard, cardType, cause)
+    }
 }

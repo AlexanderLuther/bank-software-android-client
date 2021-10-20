@@ -1,6 +1,6 @@
 package com.hss.hssbanksystem.data.network
 
-import com.hss.hssbanksystem.core.DataStoreHelper
+import com.hss.hssbanksystem.data.model.AccountIdModel
 import com.hss.hssbanksystem.data.model.RequestModel
 import retrofit2.http.*
 
@@ -11,4 +11,38 @@ interface RequestApi {
     suspend fun requestBankAccount(
         @Field("account_type") type: Int
     ) : RequestModel
+
+    @FormUrlEncoded
+    @POST("request/loan")
+    suspend fun requestLoan(
+        @Field("amount") amount: Double,
+        @Field("monthly_income") income: Double,
+        @Field("cause") cause: String,
+        @Field("guarantor_cui") cui: String
+    ): RequestModel
+
+    @FormUrlEncoded
+    @POST("request/credit_card")
+    suspend fun requestCreditCard(
+        @Field("monthly_income") income: Double,
+        @Field("desire_amount") amount: Double
+    ) : RequestModel
+
+    @FormUrlEncoded
+    @POST("request/debit_card")
+    suspend fun requestDebitCard(
+        @Field("id_account") id: String
+    ) : RequestModel
+
+    @FormUrlEncoded
+    @POST("request/card_cancellation")
+    suspend fun requestCardCancellation(
+        @Field("id_card") idCard: String,
+        @Field("card_type") cardType: Int,
+        @Field("cause") cause: String
+    ) : RequestModel
+
+    @GET("account/avaliable_for_debit_card")
+    suspend fun getAccountsAvailableForDebitCard(
+    ) : AccountIdModel
 }

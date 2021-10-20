@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.hss.hssbanksystem.data.Resource
+import com.hss.hssbanksystem.data.model.AccountIdModel
+import com.hss.hssbanksystem.data.model.AccountIdModelItem
 import com.hss.hssbanksystem.data.model.RequestModel
 import com.hss.hssbanksystem.data.repository.RequestRepository
 import com.hss.hssbanksystem.ui.viewmodel.base.BaseViewModel
@@ -17,16 +19,38 @@ class RequestViewModel(
     val requestModel: LiveData<Resource<RequestModel>>
         get() = _requestModel
 
+    private val _accountIdModel : MutableLiveData<Resource<AccountIdModel>> = MutableLiveData()
+    val accountIdModel: LiveData<Resource<AccountIdModel>>
+        get() = _accountIdModel
+
     fun requestBankAccount(type: Int) = viewModelScope.launch{
         _requestModel.value = Resource.Loading
         _requestModel.value = repository.requestBankAccount(type)
     }
 
     fun requestCreditCard(monthlyIncome: Double, creditAmount: Double) = viewModelScope.launch{
+        _requestModel.value = Resource.Loading
+        _requestModel.value = repository.requestCreditCard(monthlyIncome, creditAmount)
+    }
 
+    fun requestDebitCard(id: String) = viewModelScope.launch {
+        _requestModel.value = Resource.Loading
+        _requestModel.value = repository.requestDebitCard(id)
     }
 
     fun requestLoan(amount: Double, monthlyIncome: Double, cause:String, guarantorCui: String) = viewModelScope.launch{
-
+        _requestModel.value = Resource.Loading
+        _requestModel.value = repository.requestLoan(amount, monthlyIncome, cause, guarantorCui)
     }
+
+    fun requestCardCancellation(idCard: String, cardType: Int, cause: String) = viewModelScope.launch{
+        _requestModel.value = Resource.Loading
+        _requestModel.value = repository.requestCardCancellation(idCard, cardType, cause)
+    }
+
+    fun getAccountsAvailableForDebitCard() = viewModelScope.launch{
+        _accountIdModel.value = Resource.Loading
+        _accountIdModel.value = repository.getAccountsAvailableForDebitCard()
+    }
+
 }

@@ -10,10 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hss.hssbanksystem.R
-import com.hss.hssbanksystem.core.handleApiError
-import com.hss.hssbanksystem.core.snackbar
-import com.hss.hssbanksystem.core.startNewActivity
-import com.hss.hssbanksystem.core.visible
+import com.hss.hssbanksystem.core.*
 import com.hss.hssbanksystem.data.Resource
 import com.hss.hssbanksystem.data.model.RequestModel
 import com.hss.hssbanksystem.data.network.RequestApi
@@ -45,6 +42,7 @@ class BankAccountRequestFragment : BaseFragment<RequestViewModel, FragmentBankAc
             if(!binding.radioButton1.isChecked && !binding.radioButton2.isChecked){
                 requireView().snackbar("No se ha seleccionado ningun tipo de cuenta.")
             } else{
+                hideKeyboard(activity)
                 viewModel.requestBankAccount(getType())
             }
         }
@@ -71,6 +69,7 @@ class BankAccountRequestFragment : BaseFragment<RequestViewModel, FragmentBankAc
         return if(binding.radioButton1.isChecked) 1
         else 2
     }
+
     override fun getViewModel() = RequestViewModel::class.java
 
     override fun getViewBinding(

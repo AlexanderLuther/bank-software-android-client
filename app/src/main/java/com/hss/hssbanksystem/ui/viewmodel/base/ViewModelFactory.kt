@@ -9,6 +9,7 @@ import com.hss.hssbanksystem.data.repository.UserRepository
 import com.hss.hssbanksystem.ui.viewmodel.home.HomeViewModel
 import com.hss.hssbanksystem.ui.viewmodel.authentication.AuthenticationViewModel
 import com.hss.hssbanksystem.ui.viewmodel.request.RequestViewModel
+import com.hss.hssbanksystem.ui.viewmodel.user.ProfileViewModel
 import com.hss.hssbanksystem.ui.viewmodel.user.UpdatePasswordViewModel
 import java.lang.IllegalArgumentException
 
@@ -20,6 +21,7 @@ class ViewModelFactory(private val repository: BaseRepository): ViewModelProvide
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(repository as UserRepository) as T
             modelClass.isAssignableFrom(UpdatePasswordViewModel::class.java) -> UpdatePasswordViewModel(repository as UserRepository) as T
             modelClass.isAssignableFrom(RequestViewModel::class.java) -> RequestViewModel(repository as RequestRepository) as T
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> ProfileViewModel(repository as UserRepository) as T
             else -> throw IllegalArgumentException("ViewModelClass Not Found")
         }
     }

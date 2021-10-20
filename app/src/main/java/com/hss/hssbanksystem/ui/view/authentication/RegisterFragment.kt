@@ -88,9 +88,10 @@ class RegisterFragment : BaseFragment<AuthenticationViewModel, FragmentRegisterB
     private fun validateData(username: String, password:String, cui:String, email: String):Boolean {
         if(username.isEmpty()) binding.usernameLayout.error = getString(R.string.usernameRequired)
         if(password.isEmpty()) binding.passwordLayout.error = getString(R.string.passwordRequired)
-        if(cui.isEmpty()) binding.cuiLayout.error = getString(R.string.cuiRequired)
         if(email.isEmpty()) binding.emailLayout.error = getString(R.string.emailRequired)
-        return username.isNotEmpty() && password.isNotEmpty() && cui.isNotEmpty() && email.isNotEmpty()
+        if(cui.isEmpty()) binding.cuiLayout.error = getString(R.string.cuiRequired)
+        else if(cui.length !=13) binding.cuiLayout.error = getString(R.string.noValidCui)
+        return username.isNotEmpty() && password.isNotEmpty() && cui.isNotEmpty() && email.isNotEmpty() && cui.length == 13
     }
 
     /**
