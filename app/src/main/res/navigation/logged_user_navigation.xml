@@ -85,7 +85,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.hss.hssbanksystem.ui.view.user.EditProfileFragment"
+        android:name="com.hss.hssbanksystem.ui.view.user.UpdateProfileRequestFragment"
         android:label="@string/updateData" >
         <action
             android:id="@+id/action_editProfileFragment_to_navProfileFragment"

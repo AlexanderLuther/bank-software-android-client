@@ -1,33 +1,27 @@
 package com.hss.hssbanksystem.ui.view.user
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
-import androidx.datastore.preferences.protobuf.Empty
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.core.handleApiError
+import com.hss.hssbanksystem.core.hideKeyboard
 import com.hss.hssbanksystem.core.snackbar
 import com.hss.hssbanksystem.core.visible
 import com.hss.hssbanksystem.data.Resource
-import com.hss.hssbanksystem.data.network.UserApi
-import com.hss.hssbanksystem.data.repository.UserRepository
-import com.hss.hssbanksystem.databinding.FragmentEditProfileBinding
-import com.hss.hssbanksystem.databinding.FragmentProfileBinding
+import com.hss.hssbanksystem.data.network.RequestApi
+import com.hss.hssbanksystem.data.repository.RequestRepository
+import com.hss.hssbanksystem.databinding.FragmentUpdateProfileRequestBinding
 import com.hss.hssbanksystem.ui.view.base.BaseFragment
-import com.hss.hssbanksystem.ui.viewmodel.user.ProfileViewModel
+import com.hss.hssbanksystem.ui.viewmodel.request.RequestViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import java.text.SimpleDateFormat
-import java.util.*
 
-class EditProfileFragment  : BaseFragment<ProfileViewModel, FragmentEditProfileBinding, UserRepository>() {
+class UpdateProfileRequestFragment  : BaseFragment<RequestViewModel, FragmentUpdateProfileRequestBinding, RequestRepository>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -38,7 +32,6 @@ class EditProfileFragment  : BaseFragment<ProfileViewModel, FragmentEditProfileB
             binding.phoneNumberLayout.editText?.setText(result.getString("phoneNumber"))
             binding.civilStatusLayout.editText?.setText(result.getString("civilStatus"))
             binding.occupationLayout.editText?.setText(result.getString("occupation"))
-
         })
 
         //Ocultar la barra de cargga
@@ -77,17 +70,18 @@ class EditProfileFragment  : BaseFragment<ProfileViewModel, FragmentEditProfileB
             val civilStatus = binding.civilStatusLayout.editText?.text.toString().trim()
             val occupation = binding.occupationLayout.editText?.text.toString().trim()
             if(validateData(address, phoneNumber, civilStatus, occupation)){
-                viewModel.updateData(address, phoneNumber, civilStatus, occupation)
+                hideKeyboard(activity)
+                viewModel.requestUpdateData(address, phoneNumber.toLong(), civilStatus, occupation)
             }
         }
 
         //Setear el patron observador
-        viewModel.userModel.observe(viewLifecycleOwner, Observer {
+        viewModel.requestModel.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
-                    requireView().snackbar(getString(R.string.successDataUpdate))
-                    findNavController().navigate(EditProfileFragmentDirections.actionEditProfileFragmentToNavProfileFragment())
+                    requireView().snackbar(it.value.message)
+                    findNavController().navigate(UpdateProfileRequestFragmentDirections.actionEditProfileFragmentToNavProfileFragment())
                 }
                 is Resource.Failure -> handleApiError(it)
             }
@@ -105,15 +99,15 @@ class EditProfileFragment  : BaseFragment<ProfileViewModel, FragmentEditProfileB
         return address.isNotEmpty() && phoneNumber.isNotEmpty() && civilStatus.isNotEmpty() && occupation.isNotEmpty()
     }
 
-    override fun getViewModel() = ProfileViewModel::class.java
+    override fun getViewModel() = RequestViewModel::class.java
 
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentEditProfileBinding = FragmentEditProfileBinding.inflate(inflater, container, false)
+    ): FragmentUpdateProfileRequestBinding = FragmentUpdateProfileRequestBinding.inflate(inflater, container, false)
 
-    override fun getRepository(): UserRepository {
+    override fun getRepository(): RequestRepository {
         val token = runBlocking { dataStoreHelper.authenticationToken.first() }
-        return UserRepository(retrofitHelper.buildApi(UserApi::class.java, token))
+        return RequestRepository(retrofitHelper.buildApi(RequestApi::class.java, token))
     }
 }

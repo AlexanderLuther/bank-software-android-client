@@ -77,7 +77,6 @@ fun Fragment.handleApiError(failure: Resource.Failure, retry: (() -> Unit)? = nu
             }
         }
     }
-
 }
 
 /**

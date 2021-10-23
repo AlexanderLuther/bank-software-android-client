@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -27,32 +28,23 @@ import java.lang.reflect.Array
 
 class DebitCardRequestFragment : BaseFragment<RequestViewModel, FragmentDebitCardRequestBinding, RequestRepository>() {
 
-    private var defaultPosition = -1
-    private var options = arrayOf<String>()
-    private lateinit var builderSingle : AlertDialog.Builder
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         //Ocultar la barra de cargga
         binding.progressBar.visible(false)
 
-        //Setear los valores iniciales del selector de cuentas
-        setSelector()
 
-        //Solicitar todas las cuentas que pueden ser vinculadas a una tarjeta de debito y mostralas en el selector
-        binding.selectAccountButton.setOnClickListener {
-            viewModel.getAccountsAvailableForDebitCard()
-            setSelectorItems()
-            builderSingle.show()
+        //Mostrar un error si el numero de cuenta de ahorro es vacio
+        binding.accountIdLayout.editText?.addTextChangedListener {
+            if(binding.accountIdLayout.editText?.text.toString().trim().isEmpty()) binding.accountIdLayout.error = getString(R.string.savingAccountIdRequired)
+            else binding.accountIdLayout.error = null
         }
 
         //Validar datos ingresados y ejecutar la solicitud de tarjeta de debito
         binding.requestButton.setOnClickListener{
-            val id = binding.selectedAccountTextView.text.toString().trim()
-            if(id.isEmpty()){
-                requireView().snackbar(getString(R.string.noAccountSelected))
-            } else{
+            val id = binding.accountIdLayout.editText?.text.toString().trim()
+            if(validateData(id)) {
                 hideKeyboard(activity)
                 viewModel.requestDebitCard(id)
             }
@@ -70,33 +62,14 @@ class DebitCardRequestFragment : BaseFragment<RequestViewModel, FragmentDebitCar
             }
         })
 
-        //Setear el patron observador sobre el modelo de id de cuentas
-        viewModel.accountIdModel.observe(viewLifecycleOwner, Observer {
-            binding.progressBar.visible(it is Resource.Loading)
-            when (it) {
-                is Resource.Success -> {
-                    options = it.value.toArray() as kotlin.Array<String>
-                }
-                is Resource.Failure -> handleApiError(it)
-            }
-        })
-
     }
 
     /**
-     * Funcion que setea los parametros iniciales del AlertDialog
+     * Funcion que valida que los campos obligatorios no esten vacios
      */
-    private fun setSelector(){
-        builderSingle = AlertDialog.Builder(requireContext())
-        builderSingle.setTitle(getString(R.string.selectAccount))
-        builderSingle.setPositiveButton("Seleccionar") { dialog, _ ->  dialog.dismiss() }
-    }
-
-    private fun setSelectorItems(){
-        builderSingle.setSingleChoiceItems(options, -1) { dialog, which ->
-            defaultPosition = which
-            binding.selectedAccountTextView.text = options[which]
-        }
+    private fun validateData(accountId: String):Boolean {
+        if(accountId.isEmpty()) binding.accountIdLayout.error = getString(R.string.savingAccountIdRequired)
+        return accountId.isNotEmpty()
     }
 
     override fun getViewModel() = RequestViewModel::class.java

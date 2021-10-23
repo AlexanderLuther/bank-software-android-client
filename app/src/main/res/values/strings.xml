@@ -100,6 +100,9 @@
     <string name="debitCard">Tarjeta de Debito</string>
     <string name="creditCard">Tarjeta de Credito</string>
     <string name="carIdRequired">Numero de tarjeta obligatorio.</string>
+    <string name="accountId">(*)Ingrese el numero de la cuenta de ahorro que desea vincular a la tarjeta de debito solicitada</string>
+    <string name="savingAccountId">Numero de Cuenta de Ahorro</string>
+    <string name="savingAccountIdRequired">Numero de cuenta de ahorro obligatorio.</string>
 
 
 </resources>

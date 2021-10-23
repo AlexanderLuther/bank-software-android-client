@@ -22,11 +22,11 @@ class RequestRepository(
         api.requestDebitCard(id)
     }
 
-    suspend fun getAccountsAvailableForDebitCard() = safeApiCall{
-        api.getAccountsAvailableForDebitCard()
+    suspend fun requestCardCancellation(idCard: String, cardType: Int, cause: String) = safeApiCall {
+        api.requestCardCancellation(idCard, cardType, cause)
     }
 
-    suspend fun  requestCardCancellation(idCard: String, cardType: Int, cause: String) = safeApiCall {
-        api.requestCardCancellation(idCard, cardType, cause)
+    suspend fun requestUpdateData(address: String, phoneNumber: Long, civilStatus: String, occupation: String) = safeApiCall {
+        api.requestUpdateData(address, phoneNumber, civilStatus, occupation)
     }
 }

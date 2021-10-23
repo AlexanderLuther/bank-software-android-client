@@ -20,34 +20,29 @@ android:layout_height="wrap_content" >
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/card" />
 
-
-    <Button
-        android:id="@+id/selectAccountButton"
-        style="?attr/materialButtonOutlinedStyle"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/accountIdLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/selectAccount"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:boxBackgroundMode="outline"
+        app:errorEnabled="true"
+        app:helperText="@string/accountId"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:startIconDrawable="@drawable/card">
 
-    <TextView
-        android:id="@+id/selectedAccountTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectAccountButton" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/savingAccountId"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/requestButton"
@@ -61,7 +56,7 @@ android:layout_height="wrap_content" >
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedAccountTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/accountIdLayout" />
 
     <ProgressBar
         android:id="@+id/progressBar"

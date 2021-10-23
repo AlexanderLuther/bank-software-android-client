@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.hss.hssbanksystem.data.Resource
-import com.hss.hssbanksystem.data.model.AccountIdModel
-import com.hss.hssbanksystem.data.model.AccountIdModelItem
 import com.hss.hssbanksystem.data.model.RequestModel
 import com.hss.hssbanksystem.data.repository.RequestRepository
 import com.hss.hssbanksystem.ui.viewmodel.base.BaseViewModel
@@ -18,10 +16,6 @@ class RequestViewModel(
     private val _requestModel : MutableLiveData<Resource<RequestModel>> = MutableLiveData()
     val requestModel: LiveData<Resource<RequestModel>>
         get() = _requestModel
-
-    private val _accountIdModel : MutableLiveData<Resource<AccountIdModel>> = MutableLiveData()
-    val accountIdModel: LiveData<Resource<AccountIdModel>>
-        get() = _accountIdModel
 
     fun requestBankAccount(type: Int) = viewModelScope.launch{
         _requestModel.value = Resource.Loading
@@ -48,9 +42,9 @@ class RequestViewModel(
         _requestModel.value = repository.requestCardCancellation(idCard, cardType, cause)
     }
 
-    fun getAccountsAvailableForDebitCard() = viewModelScope.launch{
-        _accountIdModel.value = Resource.Loading
-        _accountIdModel.value = repository.getAccountsAvailableForDebitCard()
+    fun requestUpdateData(address: String, phoneNumber: Long, civilStatus: String, occupation: String) = viewModelScope.launch {
+        _requestModel.value = Resource.Loading
+        _requestModel.value = repository.requestUpdateData(address, phoneNumber, civilStatus, occupation)
     }
 
 }

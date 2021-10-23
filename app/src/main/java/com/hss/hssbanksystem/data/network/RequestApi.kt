@@ -1,6 +1,5 @@
 package com.hss.hssbanksystem.data.network
 
-import com.hss.hssbanksystem.data.model.AccountIdModel
 import com.hss.hssbanksystem.data.model.RequestModel
 import retrofit2.http.*
 
@@ -42,7 +41,13 @@ interface RequestApi {
         @Field("cause") cause: String
     ) : RequestModel
 
-    @GET("account/avaliable_for_debit_card")
-    suspend fun getAccountsAvailableForDebitCard(
-    ) : AccountIdModel
+    @FormUrlEncoded
+    @POST("request/update_data")
+    suspend fun requestUpdateData(
+        @Field("address") address: String,
+        @Field("phone_number") phoneNumber: Long,
+        @Field("civil_status") civilStatus: String,
+        @Field("ocupation") occupation: String
+    ) : RequestModel
+
 }

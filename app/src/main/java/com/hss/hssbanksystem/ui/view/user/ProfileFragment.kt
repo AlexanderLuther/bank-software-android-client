@@ -27,6 +27,7 @@ import com.hss.hssbanksystem.ui.viewmodel.home.HomeViewModel
 import com.hss.hssbanksystem.ui.viewmodel.user.ProfileViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import java.math.BigInteger
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -68,10 +69,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
                 is Resource.Success -> {
                     binding.nameLayout.editText?.setText(it.value.name)
                     binding.surNameLayout.editText?.setText(it.value.surname)
-                    binding.cuiLayout.editText?.setText(it.value.cui)
+                    binding.cuiLayout.editText?.setText(it.value.cui.toString())
                     binding.addressLayout.editText?.setText(it.value.address)
-                    binding.phoneNumberLayout.editText?.setText(it.value.phoneNumber)
-                    binding.birthDayLayout.editText?.setText(it.value.birthDay)
+                    binding.phoneNumberLayout.editText?.setText(it.value.phoneNumber.toString())
+                    binding.birthDayLayout.editText?.setText(outputDateFormat.format(it.value.birthDay))
                     binding.genderLayout.editText?.setText(it.value.gender)
                     binding.civilStatusLayout.editText?.setText(it.value.civilStatus)
                     binding.occupationLayout.editText?.setText(it.value.ocupation)
