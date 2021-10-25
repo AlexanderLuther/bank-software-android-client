@@ -62,6 +62,11 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, U
             findNavController().navigate(ProfileFragmentDirections.actionNavProfileFragmentToUpdatePasswordFragment())
         }
 
+        //Cambiar a la vista de cambio de correo electronico
+        binding.editEmailButton.setOnClickListener {
+            findNavController().navigate(ProfileFragmentDirections.actionNavProfileFragmentToUpdateEmailFragment())
+        }
+
         //Setear el patron observador
         viewModel.userModel.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(it is Resource.Loading)

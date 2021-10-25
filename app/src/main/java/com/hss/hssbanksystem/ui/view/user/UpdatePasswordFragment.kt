@@ -1,35 +1,26 @@
 package com.hss.hssbanksystem.ui.view.user
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.core.handleApiError
 import com.hss.hssbanksystem.core.hideKeyboard
-import com.hss.hssbanksystem.core.startNewActivity
 import com.hss.hssbanksystem.core.visible
 import com.hss.hssbanksystem.data.Resource
 import com.hss.hssbanksystem.data.network.UserApi
 import com.hss.hssbanksystem.data.repository.UserRepository
-import com.hss.hssbanksystem.databinding.FragmentHomeBinding
 import com.hss.hssbanksystem.databinding.FragmentUpdatePasswordBinding
-import com.hss.hssbanksystem.ui.view.authentication.LoginFragmentDirections
 import com.hss.hssbanksystem.ui.view.base.BaseFragment
-import com.hss.hssbanksystem.ui.view.base.HomeActivity
-import com.hss.hssbanksystem.ui.viewmodel.home.HomeViewModel
-import com.hss.hssbanksystem.ui.viewmodel.user.UpdatePasswordViewModel
+import com.hss.hssbanksystem.ui.viewmodel.user.UpdateUserDataViewModel
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class UpdatePasswordFragment :  BaseFragment<UpdatePasswordViewModel, FragmentUpdatePasswordBinding, UserRepository>() {
+class UpdatePasswordFragment :  BaseFragment<UpdateUserDataViewModel, FragmentUpdatePasswordBinding, UserRepository>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -81,7 +72,7 @@ class UpdatePasswordFragment :  BaseFragment<UpdatePasswordViewModel, FragmentUp
         return oldPassword.isNotEmpty() && newPassword.isNotEmpty()
     }
 
-    override fun getViewModel() = UpdatePasswordViewModel::class.java
+    override fun getViewModel() = UpdateUserDataViewModel::class.java
 
     override fun getViewBinding(
         inflater: LayoutInflater,
