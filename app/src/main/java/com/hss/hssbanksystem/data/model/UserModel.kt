@@ -14,6 +14,4 @@ data class UserModel(
     @SerializedName("civil_status") val civilStatus: String,
     @SerializedName("ocupation") val ocupation: String,
     @SerializedName("last_update_date") val lastUpdate: String
-
-
 )

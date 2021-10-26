@@ -103,6 +103,28 @@
     <string name="accountId">(*)Ingrese el numero de la cuenta de ahorro que desea vincular a la tarjeta de debito solicitada</string>
     <string name="savingAccountId">Numero de Cuenta de Ahorro</string>
     <string name="savingAccountIdRequired">Numero de cuenta de ahorro obligatorio.</string>
+    <string name="onlyClientsMessage">Solamente usuarios cliente pueden iniciar sesion en la app movil.</string>
+    <string name="view">Ver</string>
+    <string name="updateEmail">Cambiar Correo Electronico</string>
+    <string name="helperNewEmail">(*)Ingrese su nuevo correo electronico.</string>
+    <string name="makeTransfer">Relizar Transferencia</string>
+    <string name="loan">Prestamo</string>
+    <string name="account">Cuenta Bancaria</string>
+    <string name="savingAccount">Cuenta de ahorro</string>
+    <string name="monetaryAccount">Cuenta monetaria</string>
+    <string name="creditCard2">Tarjeta de credito</string>
+    <string name="loan2">Prestamo bancario</string>
+    <string name="payment">Pago</string>
+    <string name="debitCard2">Tarjeta de debito</string>
+    <string name="number">Numero:</string>
+    <string name="balance">Balance:</string>
+    <string name="creditLimit">Limite de credito:</string>
+    <string name="maxPaymentDate">Fecha maxima de pago:</string>
+    <string name="interes">Interes:</string>
+    <string name="monthlyPayment">Pago mensual:</string>
+    <string name="loanAmount2">Cantidad prestada:</string>
+    <string name="id">Identificador:</string>
+    <string name="linkedAccount">Numero de cuenta asociada:</string>
 
 
 </resources>

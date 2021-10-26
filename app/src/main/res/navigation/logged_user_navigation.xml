@@ -9,7 +9,20 @@
         android:id="@+id/navHomeFragment"
         android:name="com.hss.hssbanksystem.ui.view.home.HomeFragment"
         tools:layout="@layout/fragment_home"
-        android:label="@string/navHome"/>
+        android:label="@string/navHome">
+        <action
+            android:id="@+id/action_navHomeFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_navHomeFragment_to_creditCardFragment"
+            app:destination="@id/creditCardFragment" />
+        <action
+            android:id="@+id/action_navHomeFragment_to_loanFragment"
+            app:destination="@id/loanFragment" />
+        <action
+            android:id="@+id/action_navHomeFragment_to_debitCardFragment"
+            app:destination="@id/debitCardFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navProfileFragment"
@@ -22,6 +35,9 @@
         <action
             android:id="@+id/action_navProfileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_navProfileFragment_to_updateEmailFragment"
+            app:destination="@id/updateEmailFragment" />
     </fragment>
 
     <fragment
@@ -91,5 +107,33 @@
             android:id="@+id/action_editProfileFragment_to_navProfileFragment"
             app:destination="@id/navProfileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/updateEmailFragment"
+        android:name="com.hss.hssbanksystem.ui.view.user.UpdateEmailFragment"
+        android:label="@string/updateEmail" >
+        <action
+            android:id="@+id/action_updateEmailFragment_to_navProfileFragment"
+            app:destination="@id/navProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.hss.hssbanksystem.ui.view.service.AccountFragment"
+        android:label="@string/account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/creditCardFragment"
+        android:name="com.hss.hssbanksystem.ui.view.service.CreditCardFragment"
+        android:label="@string/creditCard"
+        tools:layout="@layout/fragment_credit_card" />
+    <fragment
+        android:id="@+id/loanFragment"
+        android:name="com.hss.hssbanksystem.ui.view.service.LoanFragment"
+        android:label="@string/loan"
+        tools:layout="@layout/fragment_loan" />
+    <fragment
+        android:id="@+id/debitCardFragment"
+        android:name="com.hss.hssbanksystem.ui.view.service.DebitCardFragment"
+        android:label="@string/debitCard"
+        tools:layout="@layout/fragment_debit_card" />
 
 </navigation>

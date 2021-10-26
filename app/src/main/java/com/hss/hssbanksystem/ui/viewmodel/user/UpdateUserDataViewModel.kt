@@ -9,7 +9,7 @@ import com.hss.hssbanksystem.data.repository.UserRepository
 import com.hss.hssbanksystem.ui.viewmodel.base.BaseViewModel
 import kotlinx.coroutines.launch
 
-class UpdatePasswordViewModel(
+class UpdateUserDataViewModel(
     private val repository: UserRepository
 ): BaseViewModel(repository){
 
@@ -20,6 +20,11 @@ class UpdatePasswordViewModel(
     fun updatePassword(oldPassword:String, newPassword:String) = viewModelScope.launch{
         _userModel.value = Resource.Loading
         _userModel.value = repository.updatePassword(oldPassword, newPassword)
+    }
+
+    fun updateEmail(email: String) = viewModelScope.launch {
+        _userModel.value = Resource.Loading
+        _userModel.value = repository.updateEmail(email)
     }
 
 }

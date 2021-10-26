@@ -13,4 +13,8 @@ class UserRepository(
     suspend fun getUser() = safeApiCall{
         api.getUser()
     }
+
+    suspend fun updateEmail(email: String) = safeApiCall {
+        api.updateEmail(email)
+    }
 }

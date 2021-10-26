@@ -20,7 +20,9 @@ import com.hss.hssbanksystem.core.DataStoreHelper
 import com.hss.hssbanksystem.core.RetrofitHelper
 import com.hss.hssbanksystem.core.startNewActivity
 import com.hss.hssbanksystem.data.network.AuthenticationApi
+import com.hss.hssbanksystem.data.network.ServiceApi
 import com.hss.hssbanksystem.data.network.UserApi
+import com.hss.hssbanksystem.data.repository.ServiceRepository
 import com.hss.hssbanksystem.data.repository.UserRepository
 import com.hss.hssbanksystem.databinding.ActivityHomeBinding
 import com.hss.hssbanksystem.ui.viewmodel.home.HomeViewModel
@@ -33,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeBinding
     private lateinit var dataStoreHelper : DataStoreHelper
-    private lateinit var repository : UserRepository
+    private lateinit var repository : ServiceRepository
     private lateinit var viewModel : HomeViewModel
     private val retrofitHelper = RetrofitHelper()
 
@@ -41,7 +43,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //Inicializar todas las variables
-        repository = UserRepository(retrofitHelper.buildApi(UserApi::class.java))
+        repository = ServiceRepository(retrofitHelper.buildApi(ServiceApi::class.java))
         viewModel =  ViewModelProvider(this, ViewModelFactory(repository)).get(HomeViewModel::class.java)
         dataStoreHelper = DataStoreHelper(this@HomeActivity)
 

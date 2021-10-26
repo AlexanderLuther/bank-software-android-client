@@ -1,6 +1,7 @@
 package com.hss.hssbanksystem.ui.view.authentication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
@@ -8,11 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hss.hssbanksystem.R
+import com.hss.hssbanksystem.core.*
 import com.hss.hssbanksystem.data.Resource
-import com.hss.hssbanksystem.core.handleApiError
-import com.hss.hssbanksystem.core.hideKeyboard
-import com.hss.hssbanksystem.core.startNewActivity
-import com.hss.hssbanksystem.core.visible
 import com.hss.hssbanksystem.data.network.AuthenticationApi
 import com.hss.hssbanksystem.data.repository.AuthenticationRepository
 import com.hss.hssbanksystem.databinding.FragmentLoginBinding
@@ -68,9 +66,13 @@ class LoginFragment : BaseFragment<AuthenticationViewModel, FragmentLoginBinding
             binding.progressBar.visible(it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
-                    lifecycleScope.launch{
-                        viewModel.saveUserData(it.value.token, it.value.username)
-                        requireActivity().startNewActivity(HomeActivity::class.java)
+                    if(it.value.userType != 1){
+                        view?.snackbar(getString(R.string.onlyClientsMessage))
+                    } else{
+                        lifecycleScope.launch{
+                            viewModel.saveUserData(it.value.token, it.value.username)
+                            requireActivity().startNewActivity(HomeActivity::class.java)
+                        }
                     }
                 }
                 is Resource.Failure -> handleApiError(it)

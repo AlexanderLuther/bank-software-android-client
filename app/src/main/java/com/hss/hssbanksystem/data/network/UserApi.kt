@@ -19,4 +19,10 @@ interface UserApi {
         @Field("new_password") newPassword: String
     ) : UserModel
 
+    @FormUrlEncoded
+    @PUT("user/email")
+    suspend fun updateEmail(
+        @Field("email") email: String
+    ) : UserModel
+
 }
