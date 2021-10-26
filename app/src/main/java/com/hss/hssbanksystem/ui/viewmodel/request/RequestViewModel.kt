@@ -47,4 +47,9 @@ class RequestViewModel(
         _requestModel.value = repository.requestUpdateData(address, phoneNumber, civilStatus, occupation)
     }
 
+    fun requestTransfer(originAccount: Long, destinatioAccount: Long, amount: Double) = viewModelScope.launch {
+        _requestModel.value = Resource.Loading
+        _requestModel.value = repository.requestTransfer(originAccount, destinatioAccount, amount)
+    }
+
 }

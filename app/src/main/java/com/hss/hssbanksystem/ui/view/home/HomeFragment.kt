@@ -49,7 +49,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, ServiceRep
                     //Establecer el listener del adapter
                     val adapter = ServiceAdapter(it.value, object : ServiceAdapter.onButtonClickListener{
                         override fun onTransferButtonClick(position: Int) {
-                            Toast.makeText(activity, "Transferencia" + it.value[position].toString(), Toast.LENGTH_SHORT).show()
+                            val bundle = Bundle()
+                            bundle.putString("id", it.value[position].id)
+                            parentFragmentManager.setFragmentResult("accountData", bundle)
+                            findNavController().navigate(HomeFragmentDirections.actionNavHomeFragmentToTransferFragment())
                         }
 
                         override fun onViewButtonClick(position: Int) {

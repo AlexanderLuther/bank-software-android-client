@@ -125,7 +125,20 @@
     <string name="loanAmount2">Cantidad prestada:</string>
     <string name="id">Identificador:</string>
     <string name="linkedAccount">Numero de cuenta asociada:</string>
-    <string name="applicationName">SistemaBancario</string>
+    <string name="applicationName">Sistema Bancario</string>
+    <string name="originBankAccountHelper">(*)Cuenta bancaria origen.</string>
+    <string name="originBankAccount">Cuenta Bancaria Origen</string>
+    <string name="destinatioBankAccountHelper">(*)Ingrese la cuenta bancaria destino.</string>
+    <string name="destinationBankAccount">Cuenta Bancaria Destino</string>
+    <string name="amountTransferHelper">(*)Ingrese la cantidad a transferir.</string>
+    <string name="amountTransfer">Cantidad a Transferir</string>
+    <string name="transfer">Transferir</string>
+    <string name="transfer2">Transferencia</string>
+    <string name="destinationAccountRequired">Cuenta destino obligatoria.</string>
+    <string name="transferAmountRequired">Cantidad a transferir obligatoria.</string>
+    <string name="originAccountRequired">Cuenta origen obligatoria.</string>
+    <string name="notEnoughtFunds">Fondos insuficientes</string>
+    <string name="noValidDestinationAccount">Cuenta destino inexistente.</string>
 
 
 </resources>

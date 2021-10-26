@@ -29,4 +29,8 @@ class RequestRepository(
     suspend fun requestUpdateData(address: String, phoneNumber: Long, civilStatus: String, occupation: String) = safeApiCall {
         api.requestUpdateData(address, phoneNumber, civilStatus, occupation)
     }
+
+    suspend fun requestTransfer(originAccount: Long, destinationAccount: Long, amount: Double)= safeApiCall {
+        api.requestTransfer(originAccount, destinationAccount, amount)
+    }
 }

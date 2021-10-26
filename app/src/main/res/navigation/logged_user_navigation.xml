@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navHomeFragment_to_debitCardFragment"
             app:destination="@id/debitCardFragment" />
+        <action
+            android:id="@+id/action_navHomeFragment_to_transferFragment"
+            app:destination="@id/transferFragment" />
     </fragment>
 
     <fragment
@@ -135,5 +138,13 @@
         android:name="com.hss.hssbanksystem.ui.view.service.DebitCardFragment"
         android:label="@string/debitCard"
         tools:layout="@layout/fragment_debit_card" />
+    <fragment
+        android:id="@+id/transferFragment"
+        android:name="com.hss.hssbanksystem.ui.view.service.TransferFragment"
+        android:label="@string/transfer2" >
+        <action
+            android:id="@+id/action_transferFragment_to_navHomeFragment"
+            app:destination="@id/navHomeFragment" />
+    </fragment>
 
 </navigation>
