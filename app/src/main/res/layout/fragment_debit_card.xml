@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ui.view.service.LoanFragment">
+        tools:context=".ui.view.service.DebitCardFragment">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/loan_home" />
+                    app:srcCompat="@drawable/debit_card" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:text="@string/id"/>
+                        android:text="@string/debitCard2"/>
 
                     <TextView
                         android:id="@+id/idTextView"
@@ -56,7 +56,7 @@
                         android:layout_marginTop="8dp"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"
-                        android:text="@string/balance"/>
+                        android:text="@string/number"/>
 
                     <TextView
                         android:id="@+id/balanceTextView"
@@ -64,52 +64,17 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:text="@string/balance"/>
 
                     <TextView
-                        android:id="@+id/totalLoanTextView"
+                        android:id="@+id/accountTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"
-                        android:text="@string/loanAmount2"/>
-
-                    <TextView
-                        android:id="@+id/cutOffDateTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:text="@string/maxPaymentDate"/>
-
-                    <TextView
-                        android:id="@+id/monthlyPaymentTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:text="@string/monthlyPayment"/>
-
-                    <TextView
-                        android:id="@+id/interesRateTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:text="@string/interes"/>
-
-                    <TextView
-                        android:id="@+id/cuiGuarantorTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:text="@string/guarantorCui"/>
+                        android:text="@string/linkedAccount"/>
 
                 </LinearLayout>
 
@@ -122,12 +87,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_gravity="center"/>
+
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/paymentsRecyclerView"
+            android:id="@+id/debitCardRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

@@ -1,18 +1,13 @@
 package com.hss.hssbanksystem.data.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.imageview.ShapeableImageView
 import com.hss.hssbanksystem.R
-import com.hss.hssbanksystem.core.startNewActivity
 import com.hss.hssbanksystem.data.model.ServiceModelItem
 
 class ServiceAdapter(
@@ -42,9 +37,9 @@ class ServiceAdapter(
 
     class ViewHolder(itemView : View, listener: onButtonClickListener) : RecyclerView.ViewHolder(itemView){
         val titleImage : ImageView = itemView.findViewById(R.id.titleImage)
-        val typeTextView : TextView = itemView.findViewById(R.id.typeTextView)
-        val balanceTextView : TextView = itemView.findViewById(R.id.balanceTextView)
-        val idTextView : TextView = itemView.findViewById(R.id.idTextView)
+        val typeTextView : TextView = itemView.findViewById(R.id.typeTextViewServiceMovement)
+        val balanceTextView : TextView = itemView.findViewById(R.id.balanceTextViewService)
+        val idTextView : TextView = itemView.findViewById(R.id.idTextViewService)
         val viewServiceButton : MaterialButton = itemView.findViewById(R.id.viewServiceButton)
         val makeTransferButton : MaterialButton = itemView.findViewById(R.id.transferButton)
 

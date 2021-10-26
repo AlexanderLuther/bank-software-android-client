@@ -1,11 +1,14 @@
 package com.hss.hssbanksystem.ui.view.service
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hss.hssbanksystem.R
 import com.hss.hssbanksystem.core.handleApiError
 import com.hss.hssbanksystem.core.visible
 import com.hss.hssbanksystem.data.Resource
@@ -14,27 +17,28 @@ import com.hss.hssbanksystem.data.adapter.LoanAdapter
 import com.hss.hssbanksystem.data.network.ServiceApi
 import com.hss.hssbanksystem.data.repository.ServiceRepository
 import com.hss.hssbanksystem.databinding.FragmentCreditCardBinding
+import com.hss.hssbanksystem.databinding.FragmentDebitCardBinding
 import com.hss.hssbanksystem.ui.view.base.BaseFragment
 import com.hss.hssbanksystem.ui.viewmodel.service.ServiceViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-class CreditCardFragment : BaseFragment<ServiceViewModel, FragmentCreditCardBinding, ServiceRepository>() {
+class DebitCardFragment : BaseFragment<ServiceViewModel, FragmentDebitCardBinding, ServiceRepository>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setCreditCardData()
+        setAccountData()
         hideProgressBar()
         setRecyclerView()
         setObserverPattern()
     }
 
-    private fun setCreditCardData(){
+    private fun setAccountData(){
         parentFragmentManager.setFragmentResultListener("serviceData", this, FragmentResultListener { requestKey, result ->
-            binding.idTextView.text = "Numero: " + result.getString("id").toString()
+            binding.idTextView.text = "Numerp: " + result.getString("id").toString()
             binding.balanceTextView.text = "Balance: Q" + result.getString("balance").toString()
             binding.typeTextView.text = result.getString("type").toString()
-            viewModel.getCreditCard(result.getString("id").toString())
+            viewModel.getDebitCard(result.getString("id").toString())
         })
     }
 
@@ -43,21 +47,19 @@ class CreditCardFragment : BaseFragment<ServiceViewModel, FragmentCreditCardBind
     }
 
     private fun setRecyclerView(){
-        binding.creditCardRecyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.creditCardRecyclerView.setHasFixedSize(true)
+        binding.debitCardRecyclerView.layoutManager = LinearLayoutManager(activity)
+        binding.debitCardRecyclerView.setHasFixedSize(true)
     }
 
     private fun setObserverPattern(){
-        viewModel.creditCardModel.observe(viewLifecycleOwner, Observer {
+        viewModel.debitCardModel.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
-                    //Seterar los valores informativos de la tarjeta de credito
-                    binding.creditLimitTextView.text ="Limite de credito: Q" + it.value.creditLimit
-                    binding.cutOffDayTextView.text ="Fecha maxima de pago: " + it.value.cutoffDate
-                    binding.interesRateTextView.text ="Interes :" + (it.value.interestRate.toDouble() * 100) + "%"
+                    //Setear los valores informativos de la tarjeta de debito
+                    binding.accountTextView.text = "Numero de cuenta enlazada: " + it.value.idAccount
                     //Setear el adapter del RecyclerView
-                    binding.creditCardRecyclerView.adapter = CardAdapter(it.value.payments)
+                    binding.debitCardRecyclerView.adapter = CardAdapter(it.value.payments)
                 }
                 is Resource.Failure -> handleApiError(it)
             }
@@ -69,7 +71,7 @@ class CreditCardFragment : BaseFragment<ServiceViewModel, FragmentCreditCardBind
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentCreditCardBinding = FragmentCreditCardBinding.inflate(inflater, container, false)
+    ): FragmentDebitCardBinding = FragmentDebitCardBinding.inflate(inflater, container, false)
 
     override fun getRepository(): ServiceRepository {
         val token = runBlocking { dataStoreHelper.authenticationToken.first() }

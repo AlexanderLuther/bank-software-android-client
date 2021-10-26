@@ -10,4 +10,20 @@ class ServiceRepository (
         api.getServices()
     }
 
+    suspend fun getAccount(id: String) = safeApiCall {
+        api.getAccount(id)
+    }
+
+    suspend fun getLoan(id: String) = safeApiCall {
+        api.getLoan(id)
+    }
+
+    suspend fun getCreditCard(id: String) = safeApiCall {
+        api.getCreditCard(id)
+    }
+
+    suspend fun getDebitCard(id: String) = safeApiCall {
+        api.getDebitCard(id)
+    }
+
 }

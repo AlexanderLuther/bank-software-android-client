@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navHomeFragment_to_loanFragment"
             app:destination="@id/loanFragment" />
+        <action
+            android:id="@+id/action_navHomeFragment_to_debitCardFragment"
+            app:destination="@id/debitCardFragment" />
     </fragment>
 
     <fragment
@@ -127,5 +130,10 @@
         android:name="com.hss.hssbanksystem.ui.view.service.LoanFragment"
         android:label="@string/loan"
         tools:layout="@layout/fragment_loan" />
+    <fragment
+        android:id="@+id/debitCardFragment"
+        android:name="com.hss.hssbanksystem.ui.view.service.DebitCardFragment"
+        android:label="@string/debitCard"
+        tools:layout="@layout/fragment_debit_card" />
 
 </navigation>

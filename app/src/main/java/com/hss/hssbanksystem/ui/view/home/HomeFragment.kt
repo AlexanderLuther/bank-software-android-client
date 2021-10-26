@@ -53,14 +53,17 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, ServiceRep
                         }
 
                         override fun onViewButtonClick(position: Int) {
-                            val bundle = Bundle()
-                            bundle.putString("id", "id")
-                            parentFragmentManager.setFragmentResult("serviceData", bundle)
                             val service = it.value[position]
+                            val bundle = Bundle()
+                            bundle.putString("id", service.id)
+                            bundle.putString("type", service.type)
+                            bundle.putString("balance", service.balance.toString())
+                            parentFragmentManager.setFragmentResult("serviceData", bundle)
                             when{
                                 service.type == getString(R.string.savingAccount) -> findNavController().navigate(HomeFragmentDirections.actionNavHomeFragmentToAccountFragment())
                                 service.type == getString(R.string.monetaryAccount) -> findNavController().navigate(HomeFragmentDirections.actionNavHomeFragmentToAccountFragment())
                                 service.type == getString(R.string.creditCard2) -> findNavController().navigate(HomeFragmentDirections.actionNavHomeFragmentToCreditCardFragment())
+                                service.type == getString(R.string.debitCard2) -> findNavController().navigate(HomeFragmentDirections.actionNavHomeFragmentToDebitCardFragment())
                                 service.type == getString(R.string.loan2) -> findNavController().navigate(HomeFragmentDirections.actionNavHomeFragmentToLoanFragment())
                             }
                         }

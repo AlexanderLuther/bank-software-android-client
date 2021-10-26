@@ -38,13 +38,13 @@
 
                 <!-- Title, secondary and supporting text -->
                 <TextView
-                    android:id="@+id/typeTextView"
+                    android:id="@+id/typeTextViewServiceMovement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
-                    android:id="@+id/idTextView"
+                    android:id="@+id/idTextViewService"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -52,7 +52,7 @@
                     android:textColor="?android:attr/textColorSecondary" />
 
                 <TextView
-                    android:id="@+id/balanceTextView"
+                    android:id="@+id/balanceTextViewService"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
