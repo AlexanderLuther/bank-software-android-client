@@ -2,10 +2,7 @@ package com.hss.hssbanksystem.data.network
 
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable
 import com.hss.hssbanksystem.data.model.*
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ServiceApi {
 
@@ -31,5 +28,4 @@ interface ServiceApi {
     suspend fun getDebitCard(
         @Query("id_card") id: String,
     ) : DebitCardModel
-
 }

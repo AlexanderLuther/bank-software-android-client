@@ -50,4 +50,11 @@ interface RequestApi {
         @Field("ocupation") occupation: String
     ) : RequestModel
 
+    @FormUrlEncoded
+    @POST("account/transfer_on_app")
+    suspend fun requestTransfer(
+        @Field("id_origin_account") originAccount: Long,
+        @Field("id_destination_account") destinationAccount: Long,
+        @Field("amount") amount: Double
+    ) : RequestModel
 }
