@@ -125,6 +125,7 @@
     <string name="loanAmount2">Cantidad prestada:</string>
     <string name="id">Identificador:</string>
     <string name="linkedAccount">Numero de cuenta asociada:</string>
+    <string name="applicationName">SistemaBancario</string>
 
 
 </resources>
